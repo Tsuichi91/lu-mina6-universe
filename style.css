@@ -200,4 +200,94 @@ audio {
   from { opacity: 0; transform: scale(0.95); }
   to   { opacity: 1; transform: scale(1); }
 }
+/* === NOW PLAYING SPOTIFY STYLE === */
+
+.now-playing-box {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--tile-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.now-cover {
+  width: 120px;
+  height: 120px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.now-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.track-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.track-meta {
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.equalizer {
+  display: flex;
+  gap: 4px;
+  margin-top: 0.5rem;
+  height: 16px;
+  align-items: end;
+}
+
+.equalizer span {
+  display: block;
+  width: 3px;
+  height: 10px;
+  background: #66e0c9;
+  border-radius: 2px;
+  animation: equalizerPulse 1s infinite ease-in-out;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+/* Equalizer animation: only active while playing */
+.equalizer.paused span {
+  animation: none;
+}
+
+/* Alternierende Höhen */
+.equalizer span:nth-child(1) { --i: 1; }
+.equalizer span:nth-child(2) { --i: 2; }
+.equalizer span:nth-child(3) { --i: 3; }
+.equalizer span:nth-child(4) { --i: 4; }
+
+@keyframes equalizerPulse {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+/* Fade-In effect for new song titles */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .now-playing-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .now-cover {
+    width: 90px;
+    height: 90px;
+  }
+}
 
