@@ -35,26 +35,56 @@ if (window.location.pathname.includes("music-player.html")) {
   allPlaylists.forEach(playlist => {
     const playerId = playlist.getAttribute("data-player");
     const audio = document.getElementById(playerId);
-    const nowPlayingDisplay = document.getElementById(`${playerId}-title`);
-    const isDynamicCover = playlist.hasAttribute("data-dynamic-cover");
-    const coverImage = isDynamicCover ? document.getElementById("singles-cover") : null;
+    const nowTitle = document.getElementById(`${playerId}-title`);
+    const eq = document.getElementById(`${playerId}-eq`);
+    const nowBox = playlist.closest(".player-section").querySelector(".now-playing-box");
+    const coverImg = nowBox.querySelector(".now-cover");
+    const artistEl = nowBox.querySelector(".artist");
+    const albumEl = nowBox.querySelector(".album");
 
-    playlist.querySelectorAll("li").forEach(item => {
-      item.addEventListener("click", () => {
-        const src = item.getAttribute("data-src");
-        const title = item.textContent;
-        const cover = item.getAttribute("data-cover");
+    const tracks = playlist.querySelectorAll("li");
 
+    // TRACK CLICK
+    tracks.forEach((track, index) => {
+      track.addEventListener("click", () => {
+        const src = track.getAttribute("data-src");
+        const title = track.textContent;
+        const cover = track.getAttribute("data-cover") || nowBox.getAttribute("data-cover");
+        const artist = nowBox.getAttribute("data-artist") || "LU●MINA6";
+        const album = nowBox.getAttribute("data-album") || "Unknown";
+
+        // Set audio source and play
         audio.src = src;
         audio.play();
-        if (nowPlayingDisplay) {
-          nowPlayingDisplay.textContent = `Now Playing: ${title}`;
-        }
 
-        if (isDynamicCover && coverImage && cover) {
-          coverImage.src = cover;
-        }
+        // Update now playing info
+        nowTitle.textContent = title;
+        coverImg.src = cover;
+        artistEl.textContent = artist;
+        albumEl.textContent = album;
+
+        // Animate title (force reflow)
+        nowTitle.classList.remove("track-title");
+        void nowTitle.offsetWidth;
+        nowTitle.classList.add("track-title");
       });
+    });
+
+    // EQUALIZER HANDLING
+    audio.addEventListener("play", () => {
+      eq?.classList.remove("paused");
+    });
+    audio.addEventListener("pause", () => {
+      eq?.classList.add("paused");
+    });
+    audio.addEventListener("ended", () => {
+      eq?.classList.add("paused");
+
+      // AUTOPLAY NEXT TRACK
+      const current = [...tracks].findIndex(li => li.getAttribute("data-src") === audio.src);
+      if (current !== -1 && current + 1 < tracks.length) {
+        tracks[current + 1].click(); // Triggert nächsten Track
+      }
     });
   });
 }
