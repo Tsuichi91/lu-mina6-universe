@@ -290,4 +290,168 @@ audio {
     height: 90px;
   }
 }
+/* === ORBIT SYSTEM === */
+
+.universe-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Zentraler Stern (Logo) */
+.central-star {
+  position: absolute;
+  z-index: 10;
+}
+.central-star img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Orbit-Ringe */
+.orbit {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  animation: rotateOrbit 20s linear infinite;
+}
+
+.orbit-outer {
+  width: 450px;
+  height: 450px;
+  animation-duration: 35s;
+}
+
+/* Planeten */
+.planet {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--tile-bg);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.planet:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px #fff, 0 0 25px #99f;
+}
+
+/* Planeten-Bilder */
+.planet img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  margin-bottom: 0.25rem;
+}
+
+/* Planeten-Text */
+.planet span {
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Positionierung: gleichmäßig verteilt */
+.orbit .planet:nth-child(1) { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+.orbit .planet:nth-child(2) { transform: rotate(90deg) translateX(150px) rotate(-90deg); }
+.orbit .planet:nth-child(3) { transform: rotate(180deg) translateX(150px) rotate(-180deg); }
+.orbit .planet:nth-child(4) { transform: rotate(270deg) translateX(150px) rotate(-270deg); }
+
+.orbit-outer .planet:nth-child(1) { transform: rotate(45deg) translateX(225px) rotate(-45deg); }
+.orbit-outer .planet:nth-child(2) { transform: rotate(135deg) translateX(225px) rotate(-135deg); }
+.orbit-outer .planet:nth-child(3) { transform: rotate(225deg) translateX(225px) rotate(-225deg); }
+.orbit-outer .planet:nth-child(4) { transform: rotate(315deg) translateX(225px) rotate(-315deg); }
+
+/* Rotation der Ringe */
+@keyframes rotateOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulsieren des Zentrallogos */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .orbit {
+    width: 220px;
+    height: 220px;
+  }
+  .orbit-outer {
+    width: 320px;
+    height: 320px;
+  }
+  .planet {
+    width: 64px;
+    height: 64px;
+  }
+  .planet img {
+    width: 28px;
+    height: 28px;
+  }
+  .planet span {
+    font-size: 0.65rem;
+  }
+  .central-star img {
+    width: 80px;
+    height: 80px;
+  }
+}
+/* === INTERAKTIVER LICHTHIMMEL === */
+
+/* Sternenhintergrund */
+body::before {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1), transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 50%),
+    radial-gradient(circle at 90% 10%, rgba(255,255,255,0.06), transparent 60%);
+  background-color: var(--bg);
+  animation: stars 60s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes stars {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 1000px 1000px, -800px -1200px, 600px -800px; }
+}
+
+/* Glow bei Hover */
+.planet:hover {
+  box-shadow: 0 0 12px 4px #a0c4ff, 0 0 30px 8px rgba(173,216,230,0.5);
+  background: linear-gradient(145deg, #ffffff22, #ffffff0a);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Planeten leicht durchscheinend */
+.planet {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
 
