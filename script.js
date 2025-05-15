@@ -35,26 +35,26 @@ if (window.location.pathname.includes("music-player.html")) {
   allPlaylists.forEach(playlist => {
     const playerId = playlist.getAttribute("data-player");
     const audio = document.getElementById(playerId);
-    const nowPlaying = document.getElementById(`${playerId.replace("-player", "")}-title`);
+    const nowPlayingDisplay = document.getElementById(`${playerId}-title`);
+    const isDynamicCover = playlist.hasAttribute("data-dynamic-cover");
+    const coverImage = isDynamicCover ? document.getElementById("singles-cover") : null;
 
-    playlist.addEventListener("click", (e) => {
-      if (e.target && e.target.nodeName === "LI") {
-        const src = e.target.getAttribute("data-src");
-        const title = e.target.textContent;
+    playlist.querySelectorAll("li").forEach(item => {
+      item.addEventListener("click", () => {
+        const src = item.getAttribute("data-src");
+        const title = item.textContent;
+        const cover = item.getAttribute("data-cover");
+
         audio.src = src;
         audio.play();
-        nowPlaying.textContent = `Now Playing: ${title}`;
-
-        // Dynamisches Cover (nur für Singles-Player)
-        if (playlist.dataset.dynamicCover === "true") {
-          const coverPath = e.target.getAttribute("data-cover");
-          const coverImg = document.getElementById("singles-cover");
-          if (coverPath && coverImg) {
-            coverImg.src = coverPath;
-          }
+        if (nowPlayingDisplay) {
+          nowPlayingDisplay.textContent = `Now Playing: ${title}`;
         }
-      }
+
+        if (isDynamicCover && coverImage && cover) {
+          coverImage.src = cover;
+        }
+      });
     });
   });
 }
-
