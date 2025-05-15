@@ -3,55 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LU●MINA6 – Orbit Portal</title>
+  <title>LU●MINA6 – Galaxy Portal</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- Interaktive Elemente -->
-  <div class="shooting-stars"></div>
+  <!-- Galaktischer Hintergrund -->
+  <div class="galaxy-background">
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+  </div>
 
+  <!-- Toggle für Dark/Light Mode -->
   <header>
     <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
   </header>
 
+  <!-- Orbit-Portal -->
   <main class="orbit-portal">
 
-    <!-- Zentraler Stern (Logo) -->
+    <!-- Zentrales Logo -->
     <div id="central-logo">
       <img src="assets/images/logos/LUMINA6_Logo.png" alt="LU●MINA6 Logo">
     </div>
 
-    <!-- Innerer Orbit (Hauptmodule) -->
+    <!-- Orbit-Modulgruppen -->
     <div class="orbit-group inner">
       <a href="pages/members.html" class="planet" data-sound="hover1.mp3">
-        <img src="assets/images/ui/LUMINA6_Member_Profiles.png" alt="Members"><span>Members</span>
+        <span>Members</span>
       </a>
       <a href="pages/discography.html" class="planet" data-sound="hover2.mp3">
-        <img src="assets/images/ui/LUMINA6_Discography.png" alt="Discography"><span>Discography</span>
+        <span>Discography</span>
       </a>
       <a href="pages/tour.html" class="planet" data-sound="hover3.mp3">
-        <img src="assets/images/ui/LUMINA6_Tour_Logo.png" alt="Tour"><span>Tour Dates</span>
+        <span>Tour</span>
       </a>
       <a href="pages/music-player.html" class="planet" data-sound="hover4.mp3">
-        <img src="assets/images/ui/LUMINA6_Music_Interface.png" alt="Music"><span>Music</span>
+        <span>Music</span>
       </a>
     </div>
 
-    <!-- Äußerer Orbit (Bonusmodule) -->
     <div class="orbit-group outer">
       <a href="pages/universe.html" class="planet" data-sound="hover5.mp3">
-        <img src="assets/images/ui/LUMINA6_Univers.png" alt="Universe"><span>Universe</span>
+        <span>Universe</span>
       </a>
-      <a href="pages/countdowns.html" class="planet" data-sound="hover6.mp3">
-        <img src="assets/images/ui/LUMINA6_COUNTDOWN.png" alt="Countdowns"><span>Countdowns</span>
+      <a href="pages/countdown.html" class="planet" data-sound="hover6.mp3">
+        <span>Countdown</span>
       </a>
       <a href="pages/quizzes.html" class="planet" data-sound="hover7.mp3">
-        <img src="assets/images/ui/LUMINA6_Quiz.png" alt="Quizzes"><span>Quizzes</span>
+        <span>Quizzes</span>
       </a>
       <a href="pages/downloads.html" class="planet" data-sound="hover8.mp3">
-        <img src="assets/images/ui/LUMINA6-Download.png" alt="Downloads"><span>Downloads</span>
+        <span>Downloads</span>
       </a>
     </div>
 
