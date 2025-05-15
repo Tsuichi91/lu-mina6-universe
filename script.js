@@ -28,4 +28,33 @@ document.querySelectorAll(".tile").forEach(tile => {
     }
   });
 });
+// MUSIC PLAYER LOGIK
+if (window.location.pathname.includes("music-player.html")) {
+  const allPlaylists = document.querySelectorAll(".playlist");
+
+  allPlaylists.forEach(playlist => {
+    const playerId = playlist.getAttribute("data-player");
+    const audio = document.getElementById(playerId);
+    const nowPlaying = document.getElementById(`${playerId.replace("-player", "")}-title`);
+
+    playlist.addEventListener("click", (e) => {
+      if (e.target && e.target.nodeName === "LI") {
+        const src = e.target.getAttribute("data-src");
+        const title = e.target.textContent;
+        audio.src = src;
+        audio.play();
+        nowPlaying.textContent = `Now Playing: ${title}`;
+
+        // Dynamisches Cover (nur für Singles-Player)
+        if (playlist.dataset.dynamicCover === "true") {
+          const coverPath = e.target.getAttribute("data-cover");
+          const coverImg = document.getElementById("singles-cover");
+          if (coverPath && coverImg) {
+            coverImg.src = coverPath;
+          }
+        }
+      }
+    });
+  });
+}
 
