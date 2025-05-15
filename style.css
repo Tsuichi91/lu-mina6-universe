@@ -64,15 +64,14 @@ body, html {
   justify-content: center;
   align-items: center;
   pointer-events: none;
+  flex-direction: column;
 }
 
 #central-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   z-index: 1;
   pointer-events: auto;
+  margin: 2rem 0;
 }
 
 #central-logo img {
@@ -83,30 +82,25 @@ body, html {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.1); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 .orbit-group {
-  position: absolute;
   display: flex;
+  justify-content: center;
   gap: 2rem;
+  flex-wrap: wrap;
   pointer-events: auto;
   z-index: 2;
 }
 
-.orbit-group.inner {
-  top: 52%;
-  left: 50%;
-  transform: translateX(-50%) translateY(0) rotate(-10deg);
-  animation: floatInner 12s ease-in-out infinite alternate;
+.orbit-group.upper {
+  margin-bottom: 2rem;
 }
 
-.orbit-group.outer {
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%) translateY(0) rotate(10deg);
-  animation: floatOuter 18s ease-in-out infinite alternate;
+.orbit-group.lower {
+  margin-top: 2rem;
 }
 
 .planet {
@@ -126,7 +120,7 @@ body, html {
   font-size: 0.6rem;
   font-weight: bold;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
   pointer-events: auto;
   overflow: hidden;
   position: relative;
@@ -150,16 +144,6 @@ body, html {
   box-shadow: 0 0 12px 4px #a0c4ff, 0 0 30px 8px rgba(173,216,230,0.5);
   background: linear-gradient(145deg, #ffffff22, #ffffff0a);
   border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-@keyframes floatInner {
-  0% { transform: translateX(-50%) translateY(0) rotate(-10deg); }
-  100% { transform: translateX(-50%) translateY(0) rotate(10deg); }
-}
-
-@keyframes floatOuter {
-  0% { transform: translateX(-50%) translateY(0) rotate(10deg); }
-  100% { transform: translateX(-50%) translateY(0) rotate(-10deg); }
 }
 
 @media (max-width: 600px) {
