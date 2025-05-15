@@ -97,3 +97,9 @@ document.addEventListener("mousemove", (e) => {
     orbit.style.transform = `rotate(${x * 40}deg) skew(${y * 3}deg, ${x * 3}deg)`;
   });
 });
+document.addEventListener("mousemove", (e) => {
+  const x = e.clientX / window.innerWidth - 0.5;
+  const y = e.clientY / window.innerHeight - 0.5;
+  document.body.style.setProperty("--parallax-x", `${x * 15}px`);
+  document.body.style.setProperty("--parallax-y", `${y * 15}px`);
+});
