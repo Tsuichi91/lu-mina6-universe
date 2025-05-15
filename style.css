@@ -71,13 +71,13 @@ body, html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+  z-index: 1;
   pointer-events: auto;
 }
 
 #central-logo img {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   animation: pulse 4s ease-in-out infinite;
 }
@@ -92,19 +92,20 @@ body, html {
   display: flex;
   gap: 2rem;
   pointer-events: auto;
+  z-index: 2;
 }
 
 .orbit-group.inner {
-  top: 35%;
+  top: 52%;
   left: 50%;
-  transform: translateX(-50%) rotate(-10deg);
+  transform: translateX(-50%) translateY(0) rotate(-10deg);
   animation: floatInner 12s ease-in-out infinite alternate;
 }
 
 .orbit-group.outer {
-  top: 15%;
+  top: 30%;
   left: 50%;
-  transform: translateX(-50%) rotate(10deg);
+  transform: translateX(-50%) translateY(0) rotate(10deg);
   animation: floatOuter 18s ease-in-out infinite alternate;
 }
 
@@ -113,8 +114,8 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -127,6 +128,21 @@ body, html {
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   transition: transform 0.3s, box-shadow 0.3s;
   pointer-events: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.planet img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  margin-bottom: 0.3rem;
+}
+
+.planet span {
+  position: absolute;
+  bottom: 8px;
+  font-size: 0.65rem;
 }
 
 .planet:hover {
@@ -137,23 +153,27 @@ body, html {
 }
 
 @keyframes floatInner {
-  0% { transform: translateX(-50%) rotate(-10deg); }
-  100% { transform: translateX(-50%) rotate(10deg); }
+  0% { transform: translateX(-50%) translateY(0) rotate(-10deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(10deg); }
 }
 
 @keyframes floatOuter {
-  0% { transform: translateX(-50%) rotate(10deg); }
-  100% { transform: translateX(-50%) rotate(-10deg); }
+  0% { transform: translateX(-50%) translateY(0) rotate(10deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(-10deg); }
 }
 
 @media (max-width: 600px) {
   .planet {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     font-size: 0.5rem;
   }
+  .planet img {
+    width: 24px;
+    height: 24px;
+  }
   #central-logo img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
 }
