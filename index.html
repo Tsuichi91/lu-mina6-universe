@@ -3,67 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LU●MINA6 – Galaxy Portal</title>
+  <title>LU●MINA6 – Portal</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- Galaktischer Hintergrund -->
+  <!-- Galaxie-Hintergrund -->
   <div class="galaxy-background">
     <div class="stars"></div>
     <div class="shooting-star"></div>
   </div>
 
-  <!-- Toggle für Dark/Light Mode -->
-  <header>
-    <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
-  </header>
-
-  <!-- Orbit-Portal -->
+  <!-- Hauptbereich mit Orbits -->
   <main class="orbit-portal">
 
-    <!-- Zentrales Logo -->
+    <!-- Orbit-Elemente oben -->
+    <div class="orbit-group upper">
+      <a href="pages/universe.html" class="planet" data-sound="hover1.mp3">
+        <img src="assets/images/ui/LUMINA6_Univers.png" alt="Universe">
+        <span>Universe</span>
+      </a>
+      <a href="pages/countdown.html" class="planet" data-sound="hover2.mp3">
+        <img src="assets/images/ui/LUMINA6_COUNTDOWN.png" alt="Countdown">
+        <span>Countdown</span>
+      </a>
+      <a href="pages/quizzes.html" class="planet" data-sound="hover3.mp3">
+        <img src="assets/images/ui/LUMINA6_Quiz.png" alt="Quizzes">
+        <span>Quizzes</span>
+      </a>
+      <a href="pages/downloads.html" class="planet" data-sound="hover4.mp3">
+        <img src="assets/images/ui/LUMINA6-Download.png" alt="Downloads">
+        <span>Downloads</span>
+      </a>
+    </div>
+
+    <!-- Zentrales Bandlogo -->
     <div id="central-logo">
       <img src="assets/images/logos/LUMINA6_Logo.png" alt="LU●MINA6 Logo">
     </div>
 
-    <!-- Orbit-Modulgruppen -->
-    <div class="orbit-group inner">
-      <a href="pages/members.html" class="planet" data-sound="hover1.mp3">
-         <img src="assets/images/ui/LUMINA6_Member_Profiles.png" alt="MEMBERS">
+    <!-- Orbit-Elemente unten -->
+    <div class="orbit-group lower">
+      <a href="pages/members.html" class="planet" data-sound="hover5.mp3">
+        <img src="assets/images/ui/LUMINA6_Member_Profiles.png" alt="Members">
         <span>Members</span>
       </a>
-      <a href="pages/discography.html" class="planet" data-sound="hover2.mp3">
-         <img src="assets/images/ui/LUMINA6_Discography.png" alt="DISCOGRAPHY">
+      <a href="pages/discography.html" class="planet" data-sound="hover6.mp3">
+        <img src="assets/images/ui/LUMINA6_Discography.png" alt="Discography">
         <span>Discography</span>
       </a>
-      <a href="pages/tour.html" class="planet" data-sound="hover3.mp3">
-         <img src="assets/images/ui/LUMINA6_Tour_Logo.png" alt="TOUR">
+      <a href="pages/tour.html" class="planet" data-sound="hover7.mp3">
+        <img src="assets/images/ui/LUMINA6_Tour_Logo.png" alt="Tour">
         <span>Tour</span>
       </a>
-      <a href="pages/music-player.html" class="planet" data-sound="hover4.mp3">
-         <img src="assets/images/ui/LUMINA6_Music_Interface.png" alt="MUSIC">
+      <a href="pages/music-player.html" class="planet" data-sound="hover8.mp3">
+        <img src="assets/images/ui/LUMINA6_Music_Interface.png" alt="Music">
         <span>Music</span>
-      </a>
-    </div>
-
-    <div class="orbit-group outer">
-      <a href="pages/universe.html" class="planet" data-sound="hover5.mp3">
-         <img src="assets/images/ui/LUMINA6_Univers.png" alt="UNIVERS">
-        <span>Universe</span>
-      </a>
-      <a href="pages/countdown.html" class="planet" data-sound="hover6.mp3">
-         <img src="assets/images/ui/LUMINA6_COUNTDOWN.png" alt="COUNTDOWN">
-        <span>Countdown</span>
-      </a>
-      <a href="pages/quizzes.html" class="planet" data-sound="hover7.mp3">
-         <img src="assets/images/ui/LUMINA6_Quiz.png" alt="QUIZ">
-        <span>Quizzes</span>
-      </a>
-      <a href="pages/downloads.html" class="planet" data-sound="hover8.mp3">
-         <img src="assets/images/ui/LUMINA6-Download.png" alt="Downloads">
-        <span>Downloads</span>
       </a>
     </div>
 
