@@ -1,496 +1,159 @@
-/* --- Grundlayout --- */
-* {
+/* === GALAXY BACKGROUND === */
+
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
+  height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background 0.4s, color 0.4s;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* --- Farbvariablen für Light/Dark Mode --- */
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --tile-bg: #f0f0f0;
-  --tile-hover: #e0e0e0;
-}
-
-body.dark {
-  --bg: #121212;
-  --text: #ffffff;
-  --tile-bg: #1e1e1e;
-  --tile-hover: #2a2a2a;
-}
-
-/* --- Header --- */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: var(--tile-bg);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-#theme-toggle {
-  font-size: 1.2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-#theme-toggle:hover {
-  transform: rotate(20deg);
-}
-
-/* --- Grid Layout --- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  flex-grow: 1;
-}
-
-/* --- Kacheln --- */
-.tile {
-  background: var(--tile-bg);
-  border-radius: 1rem;
-  padding: 1rem;
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s, background 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.tile:hover {
-  background: var(--tile-hover);
-  transform: translateY(-5px) scale(1.02);
-}
-
-.tile img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
-}
-
-.tile span {
-  display: block;
-  font-weight: bold;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-}
-/* === MUSIC PLAYER EXTENDED === */
-
-.player-section {
-  max-width: 700px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: var(--tile-bg);
-  border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  transition: background 0.3s ease;
-}
-
-.player-section h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-}
-
-.cover {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-audio {
-  width: 100%;
-  margin-top: 1rem;
-}
-
-.now-playing {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-
-.playlist {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
-}
-
-.playlist li {
-  background: var(--tile-hover);
-  padding: 0.75rem 1rem;
-  margin: 0.4rem 0;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.playlist li:hover {
-  background: var(--tile-bg);
-  transform: scale(1.02);
-}
-
-@media (max-width: 600px) {
-  .player-section {
-    padding: 1rem;
-  }
-
-  .cover {
-    max-width: 90%;
-  }
-}
-/* === Now Playing Animation === */
-.now-playing {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-top: 1rem;
-  color: var(--text);
-  position: relative;
+  background-color: #050b1f;
+  color: white;
   overflow: hidden;
-  animation: fadeIn 0.4s ease;
 }
 
-.now-playing::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
+.galaxy-background {
+  position: fixed;
+  top: 0; left: 0;
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #ff5f6d, #ffc371, #5ee7df, #b490ca);
-  background-size: 400% 100%;
-  animation: wave 2s linear infinite;
-  border-radius: 2px;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-@keyframes wave {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+.stars {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 3px 3px;
+  background-position: 0 0, 1.5px 1.5px;
+  opacity: 0.15;
+  animation: starfield 100s linear infinite;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to   { opacity: 1; transform: scale(1); }
-}
-/* === NOW PLAYING SPOTIFY STYLE === */
-
-.now-playing-box {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  background: var(--tile-bg);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
+@keyframes starfield {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2000px); }
 }
 
-.now-cover {
-  width: 120px;
-  height: 120px;
-  border-radius: 0.5rem;
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(-45deg, white, transparent);
+  top: -10%;
+  left: 100%;
+  animation: shoot 12s infinite ease-in-out;
+  opacity: 0.6;
 }
 
-.now-info {
-  flex: 1;
-  min-width: 200px;
+@keyframes shoot {
+  0% { transform: translate(0, 0) rotate(-45deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(-150vw, 150vh) rotate(-45deg); opacity: 0; }
 }
 
-.track-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
-  animation: fadeIn 0.3s ease;
-}
+/* === ORBIT PORTAL === */
 
-.track-meta {
-  font-size: 0.9rem;
-  color: var(--text);
-  opacity: 0.8;
-}
-
-.equalizer {
-  display: flex;
-  gap: 4px;
-  margin-top: 0.5rem;
-  height: 16px;
-  align-items: end;
-}
-
-.equalizer span {
-  display: block;
-  width: 3px;
-  height: 10px;
-  background: #66e0c9;
-  border-radius: 2px;
-  animation: equalizerPulse 1s infinite ease-in-out;
-  animation-delay: calc(0.1s * var(--i));
-}
-
-/* Equalizer animation: only active while playing */
-.equalizer.paused span {
-  animation: none;
-}
-
-/* Alternierende Höhen */
-.equalizer span:nth-child(1) { --i: 1; }
-.equalizer span:nth-child(2) { --i: 2; }
-.equalizer span:nth-child(3) { --i: 3; }
-.equalizer span:nth-child(4) { --i: 4; }
-
-@keyframes equalizerPulse {
-  0%, 100% { transform: scaleY(0.3); }
-  50% { transform: scaleY(1); }
-}
-
-/* Fade-In effect for new song titles */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 600px) {
-  .now-playing-box {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .now-cover {
-    width: 90px;
-    height: 90px;
-  }
-}
-/* === ORBIT SYSTEM === */
-
-.universe-container {
+.orbit-portal {
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--bg);
+  pointer-events: none;
 }
 
-/* Zentraler Stern */
-.central-star {
+#central-logo {
   position: absolute;
-  z-index: 10;
-  width: 100px;
-  height: 100px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: auto;
 }
-.central-star img {
-  width: 100%;
-  height: 100%;
+
+#central-logo img {
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   animation: pulse 4s ease-in-out infinite;
 }
 
-/* Orbit-Ringe */
-.orbit {
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.orbit-group {
   position: absolute;
-  top: 50%;
+  display: flex;
+  gap: 2rem;
+  pointer-events: auto;
+}
+
+.orbit-group.inner {
+  top: 35%;
   left: 50%;
-  width: 60vmin;
-  height: 60vmin;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  animation: rotateOrbit 40s linear infinite;
+  transform: translateX(-50%) rotate(-10deg);
+  animation: floatInner 12s ease-in-out infinite alternate;
 }
 
-.orbit-outer {
-  width: 85vmin;
-  height: 85vmin;
-  animation-duration: 60s;
+.orbit-group.outer {
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%) rotate(10deg);
+  animation: floatOuter 18s ease-in-out infinite alternate;
 }
 
-/* Planeten */
 .planet {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  color: var(--text);
-  transform: rotate(var(--angle)) translateX(50%) rotate(calc(-1 * var(--angle)));
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.planet:hover {
-  transform: rotate(var(--angle)) translateX(50%) rotate(calc(-1 * var(--angle))) scale(1.1);
-  box-shadow: 0 0 10px 4px #a0c4ff, 0 0 25px 6px rgba(173,216,230,0.5);
-}
-
-/* Planeten-Inhalte */
-.planet img {
-  width: 36px;
-  height: 36px;
-  margin-bottom: 0.3rem;
-}
-
-.planet span {
-  font-size: 0.7rem;
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
   text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  pointer-events: auto;
 }
-
-/* Animation */
-@keyframes rotateOrbit {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.08); }
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .planet {
-    width: 60px;
-    height: 60px;
-  }
-  .planet img {
-    width: 28px;
-    height: 28px;
-  }
-  .planet span {
-    font-size: 0.6rem;
-  }
-  .central-star {
-    width: 70px;
-    height: 70px;
-  }
-}
-/* === GALAKTISCHER HINTERGRUND MIT PARALLAX UND SHOOTING STARS === */
-
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  z-index: -2;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  transform: translate(var(--parallax-x, 0px), var(--parallax-y, 0px));
-  transition: transform 0.1s ease;
-}
-
-body::before {
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1), transparent 40%),
-    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 50%),
-    radial-gradient(circle at 90% 10%, rgba(255,255,255,0.06), transparent 60%);
-  background-color: #050b1f;
-  animation: starsMove 60s linear infinite;
-}
-
-body::after {
-  background-image:
-    radial-gradient(circle at 30% 40%, rgba(187, 100, 255, 0.1), transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(255, 200, 100, 0.1), transparent 60%);
-  mix-blend-mode: screen;
-  opacity: 0.4;
-  animation: galaxyDrift 80s ease-in-out infinite alternate;
-}
-
-@keyframes starsMove {
-  0% { background-position: 0 0, 0 0, 0 0; }
-  100% { background-position: 1000px 1000px, -800px -1200px, 600px -800px; }
-}
-
-@keyframes galaxyDrift {
-  0%   { transform: translate(0px, 0px) scale(1); }
-  100% { transform: translate(-50px, 30px) scale(1.05); }
-}
-
-/* === SHOOTING STARS === */
-
-.shooting-stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.shooting-stars::before {
-  content: '';
-  position: absolute;
-  top: -10%;
-  left: 100%;
-  width: 2px;
-  height: 100px;
-  background: linear-gradient(-45deg, white, transparent);
-  animation: shoot 8s infinite ease-in-out;
-  opacity: 0.8;
-}
-
-@keyframes shoot {
-  0%   { transform: translate(0, 0) rotate(-45deg); opacity: 0; }
-  5%   { opacity: 1; }
-  100% { transform: translate(-150vw, 150vh) rotate(-45deg); opacity: 0; }
-}
-
-/* === PLANETEN HOVER-EFFEKTE === */
 
 .planet:hover {
+  transform: scale(1.1);
   box-shadow: 0 0 12px 4px #a0c4ff, 0 0 30px 8px rgba(173,216,230,0.5);
   background: linear-gradient(145deg, #ffffff22, #ffffff0a);
-  backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.planet {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+@keyframes floatInner {
+  0% { transform: translateX(-50%) rotate(-10deg); }
+  100% { transform: translateX(-50%) rotate(10deg); }
 }
 
+@keyframes floatOuter {
+  0% { transform: translateX(-50%) rotate(10deg); }
+  100% { transform: translateX(-50%) rotate(-10deg); }
+}
+
+@media (max-width: 600px) {
+  .planet {
+    width: 56px;
+    height: 56px;
+    font-size: 0.5rem;
+  }
+  #central-logo img {
+    width: 80px;
+    height: 80px;
+  }
+}
