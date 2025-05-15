@@ -1,1 +1,100 @@
+/* --- Grundlayout --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Farbvariablen für Light/Dark Mode --- */
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --tile-bg: #f0f0f0;
+  --tile-hover: #e0e0e0;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #ffffff;
+  --tile-bg: #1e1e1e;
+  --tile-hover: #2a2a2a;
+}
+
+/* --- Header --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--tile-bg);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#theme-toggle {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* --- Grid Layout --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+/* --- Kacheln --- */
+.tile {
+  background: var(--tile-bg);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, background 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.tile:hover {
+  background: var(--tile-hover);
+  transform: translateY(-5px) scale(1.02);
+}
+
+.tile img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.tile span {
+  display: block;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
 
