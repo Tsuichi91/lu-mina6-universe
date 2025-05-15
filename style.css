@@ -166,4 +166,38 @@ audio {
     max-width: 90%;
   }
 }
+/* === Now Playing Animation === */
+.now-playing {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease;
+}
+
+.now-playing::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371, #5ee7df, #b490ca);
+  background-size: 400% 100%;
+  animation: wave 2s linear infinite;
+  border-radius: 2px;
+}
+
+@keyframes wave {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
 
