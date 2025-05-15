@@ -294,23 +294,28 @@ audio {
 
 .universe-container {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background: var(--bg);
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  background: var(--bg);
 }
 
-/* Zentraler Stern (Logo) */
+/* Zentraler Stern */
 .central-star {
   position: absolute;
   z-index: 10;
-}
-.central-star img {
   width: 100px;
   height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.central-star img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   animation: pulse 4s ease-in-out infinite;
 }
@@ -318,16 +323,19 @@ audio {
 /* Orbit-Ringe */
 .orbit {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  top: 50%;
+  left: 50%;
+  width: 60vmin;
+  height: 60vmin;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  animation: rotateOrbit 20s linear infinite;
+  animation: rotateOrbit 40s linear infinite;
 }
 
 .orbit-outer {
-  width: 450px;
-  height: 450px;
-  animation-duration: 35s;
+  width: 85vmin;
+  height: 85vmin;
+  animation-duration: 60s;
 }
 
 /* Planeten */
@@ -336,84 +344,64 @@ audio {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: var(--tile-bg);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   color: var(--text);
+  transform: rotate(var(--angle)) translateX(50%) rotate(calc(-1 * var(--angle)));
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .planet:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 12px #fff, 0 0 25px #99f;
+  transform: rotate(var(--angle)) translateX(50%) rotate(calc(-1 * var(--angle))) scale(1.1);
+  box-shadow: 0 0 10px 4px #a0c4ff, 0 0 25px 6px rgba(173,216,230,0.5);
 }
 
-/* Planeten-Bilder */
+/* Planeten-Inhalte */
 .planet img {
   width: 36px;
   height: 36px;
-  object-fit: contain;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
 }
 
-/* Planeten-Text */
 .planet span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-align: center;
-  line-height: 1;
 }
 
-/* Positionierung: gleichmäßig verteilt */
-.orbit .planet:nth-child(1) { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-.orbit .planet:nth-child(2) { transform: rotate(90deg) translateX(150px) rotate(-90deg); }
-.orbit .planet:nth-child(3) { transform: rotate(180deg) translateX(150px) rotate(-180deg); }
-.orbit .planet:nth-child(4) { transform: rotate(270deg) translateX(150px) rotate(-270deg); }
-
-.orbit-outer .planet:nth-child(1) { transform: rotate(45deg) translateX(225px) rotate(-45deg); }
-.orbit-outer .planet:nth-child(2) { transform: rotate(135deg) translateX(225px) rotate(-135deg); }
-.orbit-outer .planet:nth-child(3) { transform: rotate(225deg) translateX(225px) rotate(-225deg); }
-.orbit-outer .planet:nth-child(4) { transform: rotate(315deg) translateX(225px) rotate(-315deg); }
-
-/* Rotation der Ringe */
+/* Animation */
 @keyframes rotateOrbit {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Pulsieren des Zentrallogos */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-  .orbit {
-    width: 220px;
-    height: 220px;
-  }
-  .orbit-outer {
-    width: 320px;
-    height: 320px;
-  }
+@media (max-width: 600px) {
   .planet {
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
   }
   .planet img {
     width: 28px;
     height: 28px;
   }
   .planet span {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
-  .central-star img {
-    width: 80px;
-    height: 80px;
+  .central-star {
+    width: 70px;
+    height: 70px;
   }
 }
 /* === INTERAKTIVER LICHTHIMMEL === */
