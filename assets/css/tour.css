@@ -1,0 +1,99 @@
+/* === TOUR.CSS === */
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tour-container {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.page-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #cbe4ff;
+  text-shadow: 0 0 8px rgba(120, 200, 255, 0.4);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeline h2 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 2rem 0 1rem;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+.tour-stop {
+  position: relative;
+  padding: 1rem 1rem 1rem 2rem;
+  margin: 0.8rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(120, 200, 255, 0.1);
+  color: #ffffff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tour-stop:hover {
+  transform: scale(1.015);
+  box-shadow: 0 0 16px 4px rgba(173, 216, 230, 0.2);
+}
+
+.tour-stop::before {
+  content: '';
+  position: absolute;
+  left: -1.1rem;
+  top: 1.2rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background: #a0d8ff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(160, 216, 255, 0.6);
+}
+
+.tour-stop span {
+  display: block;
+  font-weight: bold;
+  color: #a5f3ff;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.tour-stop em {
+  display: block;
+  font-style: normal;
+  color: #ffd8ff;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 1.4rem;
+  }
+  .timeline h2 {
+    font-size: 1.2rem;
+  }
+  .tour-stop {
+    padding-left: 1.5rem;
+  }
+  .tour-stop::before {
+    left: -0.9rem;
+    top: 1rem;
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+}
