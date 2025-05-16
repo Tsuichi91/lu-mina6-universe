@@ -68,8 +68,8 @@ body {
 }
 
 .planet img {
-  width: 64px;
-  height: 64px;
+  width: 125px;
+  height: 125px;
   margin-bottom: 0.3rem;
   pointer-events: auto;
 }
