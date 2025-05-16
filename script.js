@@ -1,26 +1,20 @@
-// === HOVER-SOUNDS ===
-document.querySelectorAll(".planet").forEach(planet => {
-  planet.addEventListener("mouseenter", () => {
-    const soundFile = planet.getAttribute("data-sound");
-    if (soundFile) {
-      const audio = new Audio(`assets/audio/${soundFile}`);
-      audio.volume = 0.5;
-      audio.play();
-    }
+// === Hover Sound Effekt ===
+document.querySelectorAll('.planet').forEach(planet => {
+  const hoverSound = new Audio('assets/audio/hover.mp3'); // Beispielpfad
+
+  planet.addEventListener('mouseenter', () => {
+    hoverSound.currentTime = 0;
+    hoverSound.play();
   });
 });
 
-// === THEME TOGGLE ===
-const toggleBtn = document.getElementById("theme-toggle");
-toggleBtn?.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-});
+// === Rotation abhängig von Mausbewegung (Bonus Effekt) ===
+const orbitContainer = document.querySelector('.orbit-rotation');
 
-// === PARALLAX-BEWEGUNG ===
-document.addEventListener("mousemove", (e) => {
+document.addEventListener('mousemove', e => {
   const x = e.clientX / window.innerWidth - 0.5;
   const y = e.clientY / window.innerHeight - 0.5;
-  document.body.style.setProperty("--parallax-x", `${x * 15}px`);
-  document.body.style.setProperty("--parallax-y", `${y * 15}px`);
+  const rotateX = y * 5;
+  const rotateY = x * 5;
+  orbitContainer.style.transform = `rotate(${rotateY * 3}deg)`;
 });
