@@ -1,20 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quizzes – LU●MINA6</title>
-  <link rel="stylesheet" href="../style.css" />
-  <script defer src="../script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LU●MINA6 Quizzes</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../assets/css/quiz.css">
 </head>
 <body>
-  <header>
-    <a href="../index.html" class="logo">← Home</a>
-    <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
-  </header>
-  <main style="padding: 2rem;">
-    <h1>Quizzes</h1>
-    <p>Take fun quizzes to test your LU●MINA6 knowledge or find out your LUMACORE type.</p>
+  <main class="quiz-container">
+    <h1 class="page-title">LU●MINA6 Quizzes</h1>
+
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="fanquiz">Fan Quiz</button>
+      <button class="tab-btn" data-tab="personality">Personality Test</button>
+    </div>
+
+    <div class="tab-content active" id="fanquiz">
+      <form id="quiz-form">
+  <div class="quiz-question">
+    <p>1. What does the symbol 🜁 represent in LU●MINA6 lore?</p>
+    <label><input type="radio" name="q1" value="wrong">A) Flame</label><br>
+    <label><input type="radio" name="q1" value="correct">B) Ether</label><br>
+    <label><input type="radio" name="q1" value="wrong">C) Reflection</label>
+  </div>
+  <div class="quiz-question">
+    <p>2. Which member is connected to the realm "The Bloom Spiral"?</p>
+    <label><input type="radio" name="q2" value="wrong">A) Haruka</label><br>
+    <label><input type="radio" name="q2" value="correct">B) Nirin</label><br>
+    <label><input type="radio" name="q2" value="wrong">C) Jiho</label>
+  </div>
+  <div class="quiz-question">
+    <p>3. What is the name of LU●MINA6’s Pride anthem?</p>
+    <label><input type="radio" name="q3" value="wrong">A) Infinite Heart</label><br>
+    <label><input type="radio" name="q3" value="correct">B) Rise Up</label><br>
+    <label><input type="radio" name="q3" value="wrong">C) Prism Stage</label>
+  </div>
+  <div class="quiz-question">
+    <p>4. What fandom name do LU●MINA6 fans use?</p>
+    <label><input type="radio" name="q4" value="correct">A) Orbithearts</label><br>
+    <label><input type="radio" name="q4" value="wrong">B) Corekeepers</label><br>
+    <label><input type="radio" name="q4" value="wrong">C) Luminizers</label>
+  </div>
+  <div class="quiz-question">
+    <p>5. Which language is not featured in the multilingual version of "Rise Up"?</p>
+    <label><input type="radio" name="q5" value="wrong">A) Korean</label><br>
+    <label><input type="radio" name="q5" value="wrong">B) Chinese</label><br>
+    <label><input type="radio" name="q5" value="correct">C) German</label>
+  </div>
+  <div class="quiz-question">
+    <p>6. Which member is known as “The Observer”?</p>
+    <label><input type="radio" name="q6" value="wrong">A) Xiao</label><br>
+    <label><input type="radio" name="q6" value="wrong">B) Jiho</label><br>
+    <label><input type="radio" name="q6" value="correct">C) Haruka</label>
+  </div>
+  <div class="quiz-question">
+    <p>7. Which realm is described as “a mirrored world of alternate selves”?</p>
+    <label><input type="radio" name="q7" value="wrong">A) The Stillvault</label><br>
+    <label><input type="radio" name="q7" value="correct">B) The Glass Thread</label><br>
+    <label><input type="radio" name="q7" value="wrong">C) The Aetherpath</label>
+  </div>
+  <div class="quiz-question">
+    <p>8. What is Jiho’s core element?</p>
+    <label><input type="radio" name="q8" value="correct">A) Earth</label><br>
+    <label><input type="radio" name="q8" value="wrong">B) Flame</label><br>
+    <label><input type="radio" name="q8" value="wrong">C) Ice</label>
+  </div>
+  <div class="quiz-question">
+    <p>9. Which song introduced the group’s first viral choreography?</p>
+    <label><input type="radio" name="q9" value="correct">A) Zero Motion</label><br>
+    <label><input type="radio" name="q9" value="wrong">B) Hush Signal</label><br>
+    <label><input type="radio" name="q9" value="wrong">C) Butterfly Tension</label>
+  </div>
+  <div class="quiz-question">
+    <p>10. What is the meaning of the LU●MINA6 symbol “●”?</p>
+    <label><input type="radio" name="q10" value="wrong">A) The void</label><br>
+    <label><input type="radio" name="q10" value="wrong">B) The group’s birth</label><br>
+    <label><input type="radio" name="q10" value="correct">C) Eclipse Point</label>
+  </div>
+  <div class="quiz-question">
+    <p>11. Which song blends Thai instruments into its production?</p>
+    <label><input type="radio" name="q11" value="wrong">A) Still You</label><br>
+    <label><input type="radio" name="q11" value="correct">B) Butterfly Tension</label><br>
+    <label><input type="radio" name="q11" value="wrong">C) Moon Like Us</label>
+  </div>
+  <div class="quiz-question">
+    <p>12. Who is associated with the quote: “I don’t burn for them. I burn for us.”</p>
+    <label><input type="radio" name="q12" value="wrong">A) Sky</label><br>
+    <label><input type="radio" name="q12" value="wrong">B) Jiho</label><br>
+    <label><input type="radio" name="q12" value="correct">C) Leo</label>
+  </div>
+  <div class="quiz-question">
+    <p>13. What is the LU●MINA6 debut single?</p>
+    <label><input type="radio" name="q13" value="correct">A) Light On Me</label><br>
+    <label><input type="radio" name="q13" value="wrong">B) PLAYDEAD</label><br>
+    <label><input type="radio" name="q13" value="wrong">C) Glowline</label>
+  </div>
+  <div class="quiz-question">
+    <p>14. Which track is a soft winter duet sung in Korean and Japanese?</p>
+    <label><input type="radio" name="q14" value="wrong">A) Paper Sky</label><br>
+    <label><input type="radio" name="q14" value="correct">B) Moon Like Us</label><br>
+    <label><input type="radio" name="q14" value="wrong">C) RE:Start</label>
+  </div>
+  <div class="quiz-question">
+    <p>15. What’s the meaning of the core “真實” in English?</p>
+    <label><input type="radio" name="q15" value="correct">A) Truth</label><br>
+    <label><input type="radio" name="q15" value="wrong">B) Pride</label><br>
+    <label><input type="radio" name="q15" value="wrong">C) Balance</label>
+  </div>
+  <button type="submit" class="quiz-submit">Submit</button>
+</form>
+      <div id="quiz-result" class="quiz-result"></div>
+      <script>
+  const form = document.getElementById('quiz-form');
+  const resultBox = document.getElementById('quiz-result');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const answers = form.querySelectorAll('input[type="radio"]:checked');
+    let score = 0;
+    answers.forEach(answer => {
+      if (answer.value === "correct") {
+        score++;
+      }
+    });
+    let resultText = `<h2>You scored ${score}/15</h2>`;
+    if (score >= 13) {
+      resultText += '<p>🌈 <strong>LUNACORE LEGEND</strong></p>';
+    } else if (score >= 9) {
+      resultText += '<p>💫 <strong>Official Orbitheart</strong></p>';
+    } else if (score >= 5) {
+      resultText += '<p>✨ <strong>Luna Trainee</strong></p>';
+    } else {
+      resultText += '<p>🌙 <strong>New to the Stars — welcome!</strong></p>';
+    }
+    resultBox.innerHTML = resultText;
+  });
+</script>
+    </div>
+
+    <div class="tab-content" id="personality">
+  <h2>Which LUMACORE Energy Flows Through You?</h2>
+  <p class="quiz-intro">Answer each question honestly and count how many times you choose each letter. At the end, match your most frequent letter to your LUMACORE!</p>
+  <ol>
+    <li>In a group, you’re most likely to be...
+      <ul>
+        <li>A) The dreamer with big ideas</li>
+        <li>B) The quiet one who holds everyone steady</li>
+        <li>C) The loud, confident hype energy</li>
+        <li>D) The observant, poetic soul</li>
+        <li>E) The mirror — you reflect others' emotions</li>
+        <li>F) The one who uplifts, hugs, and laughs loudest</li>
+      </ul>
+    </li>
+    <li>How do you handle conflict?
+      <ul>
+        <li>A) Retreat, then return with clarity</li>
+        <li>B) Stay calm, speak factually</li>
+        <li>C) Face it head-on, no filter</li>
+        <li>D) Try to understand, write your thoughts down</li>
+        <li>E) Absorb too much, cry later</li>
+        <li>F) Talk it out, then spread positive energy</li>
+      </ul>
+    </li>
+    <li>Your fashion style is closest to...
+      <ul>
+        <li>A) Flowy, dreamy, layers</li>
+        <li>B) Earth tones, comfort, simple</li>
+        <li>C) Bold, sharp, experimental</li>
+        <li>D) Soft, tailored, cool</li>
+        <li>E) Reflective, asymmetrical, statement pieces</li>
+        <li>F) Bright, mixed, joyful and loud</li>
+      </ul>
+    </li>
+    <li>A lyric that feels like you:
+      <ul>
+        <li>A) “I live in the in-between”</li>
+        <li>B) “I’m grounded like no one else”</li>
+        <li>C) “I burn for what I believe”</li>
+        <li>D) “Silence says more than words”</li>
+        <li>E) “I see your truth before you speak”</li>
+        <li>F) “We shine because we feel”</li>
+      </ul>
+    </li>
+    <li>Your ideal power in a magical world would be...
+      <ul>
+        <li>A) Time travel through memory</li>
+        <li>B) Controlling gravity</li>
+        <li>C) Fire fists and electric energy</li>
+        <li>D) Freezing time to observe</li>
+        <li>E) Reading emotions through light</li>
+        <li>F) Creating color from sound</li>
+      </ul>
+    </li>
+    <li>How do you show love?
+      <ul>
+        <li>A) Writing something beautiful</li>
+        <li>B) Acts of service and quiet presence</li>
+        <li>C) Fierce protection</li>
+        <li>D) Listening and noticing the small things</li>
+        <li>E) Making people feel seen</li>
+        <li>F) Physical affection and loud support</li>
+      </ul>
+    </li>
+    <li>What makes you feel seen?
+      <ul>
+        <li>A) Someone understanding your weird side</li>
+        <li>B) Someone depending on you</li>
+        <li>C) Being celebrated out loud</li>
+        <li>D) Someone noticing the detail no one else does</li>
+        <li>E) Eye contact with no words</li>
+        <li>F) Being held like nothing else matters</li>
+      </ul>
+    </li>
+    <li>Which phrase speaks to you most?
+      <ul>
+        <li>A) "Some voices live in silence — mine lives in stars."</li>
+        <li>B) "I fall like stone. Solid. Unmoved."</li>
+        <li>C) "I don’t burn for them. I burn for us."</li>
+        <li>D) "Frozen doesn’t mean cold. It means deliberate."</li>
+        <li>E) "If you look long enough, the reflection speaks back."</li>
+        <li>F) "I don’t need to shine alone. I shine through you."</li>
+      </ul>
+    </li>
+    <li>A place that feels like home:
+      <ul>
+        <li>A) A misty field at sunrise</li>
+        <li>B) A quiet mountain path</li>
+        <li>C) A concert crowd screaming your name</li>
+        <li>D) A hidden lake in winter</li>
+        <li>E) A city window in the rain</li>
+        <li>F) A warm kitchen full of laughter</li>
+      </ul>
+    </li>
+    <li>You rise up when...
+      <ul>
+        <li>A) You’re reminded of your purpose</li>
+        <li>B) Someone needs you</li>
+        <li>C) You’ve had enough — and you fight back</li>
+        <li>D) You finally feel safe</li>
+        <li>E) You realize you’ve been loved all along</li>
+        <li>F) You see someone else’s light</li>
+      </ul>
+    </li>
+  </ol>
+  <p><strong>🌟 RESULTS: Count your letters!</strong></p>
+  <ul>
+    <li>🔮 Mostly A — <strong>SKY (Ether Core)</strong><br>You are intuitive, dreamy, deeply spiritual. You exist in-between ideas and realities.<br>Symbol: 🜁 | Color: Violet Mist</li>
+    <li>🌍 Mostly B — <strong>JIHO (Earth Core)</strong><br>You are grounded, dependable, and fiercely loyal.<br>Symbol: 🜃 | Color: Forest Green</li>
+    <li>🔥 Mostly C — <strong>LEO (Flame Core)</strong><br>Bold, unapologetic, and brave.<br>Symbol: 🜂 | Color: Gold Crimson</li>
+    <li>❄️ Mostly D — <strong>HARUKA (Ice Core)</strong><br>Quietly brilliant, elegant, and poetic.<br>Symbol: 🜄 | Color: Icy Blue</li>
+    <li>🪞 Mostly E — <strong>XIAO (Mirror Core)</strong><br>You reflect emotions and uncover truths.<br>Symbol: 🪞 | Color: Mirror Silver</li>
+    <li>🌈 Mostly F — <strong>NIRIN (Flare Core)</strong><br>You are joy, empathy, and light.<br>Symbol: 🌈 | Color: Rainbow Gold</li>
+  </ul>
+</div>
   </main>
+
+  <script>
+    // Tab switching logic
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById(button.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
