@@ -1,5 +1,10 @@
 /* === DISCOGRAPHY.CSS === */
 
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .discography-container {
   padding: 4rem 2rem;
   max-width: 1200px;
