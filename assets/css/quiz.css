@@ -168,3 +168,32 @@ body {
     box-shadow: 0 0 10px 4px #6cf, 0 0 20px 8px #39f;
   }
 }
+/* === PERSONALITY RESULT STYLING === */
+#personality-result {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  text-align: center;
+  box-shadow: 0 0 20px rgba(173, 216, 255, 0.3);
+  animation: pulseGlow 2s ease-in-out infinite alternate;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+#personality-result strong {
+  display: block;
+  font-size: 1.5rem;
+  color: #6cf;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #6cf, 0 0 20px #39f;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(108, 240, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(108, 240, 255, 0.7), 0 0 45px rgba(57, 157, 255, 0.6);
+  }
+}
