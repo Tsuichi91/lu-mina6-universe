@@ -2,19 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Universe – LU●MINA6</title>
-  <link rel="stylesheet" href="../style.css" />
-  <script defer src="../script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LU●MINA6 Universe</title>
+  <link rel="stylesheet" href="../assets/css/universe.css" />
 </head>
 <body>
-  <header>
-    <a href="../index.html" class="logo">← Home</a>
-    <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
-  </header>
-  <main style="padding: 2rem;">
-    <h1>Universe</h1>
-    <p>The fictional universe, storyline, and concept of LU●MINA6 will be detailed here.</p>
+  <main class="universe-wrapper">
+    <div class="universe-center">
+      <img src="../assets/images/logos/LUMINA6_Logo.png" alt="LU●MINA6 Logo" class="central-logo" />
+    </div>
+
+    <div class="universe-orbit">
+      <!-- Realm Buttons -->
+      <button class="realm planet ether" data-info="aetherpath">🜁</button>
+      <button class="realm planet earth" data-info="deep-pulse">🜃</button>
+      <button class="realm planet flame" data-info="emberline">🜂</button>
+      <button class="realm planet ice" data-info="stillvault">🜄</button>
+      <button class="realm planet mirror" data-info="glass-thread">🪞</button>
+      <button class="realm planet flare" data-info="bloom-spiral">🌈</button>
+    </div>
+
+    <section id="realm-details" class="realm-info">
+      <h2 class="realm-title">Select a Realm</h2>
+      <p class="realm-description">Hover or tap a realm to learn more about its energy core.</p>
+    </section>
   </main>
+
+  <script>
+    const realmData = {
+      aetherpath: {
+        name: "The Aetherpath",
+        text: "Realm of intuition, dreams, and silence — SKY’s ether core."
+      },
+      "deep-pulse": {
+        name: "The Deep Pulse",
+        text: "Realm of loyalty, weight, and foundation — JIHO’s earth core."
+      },
+      emberline: {
+        name: "The Emberline",
+        text: "Realm of passion, resistance, and boldness — LEO’s flame core."
+      },
+      stillvault: {
+        name: "The Stillvault",
+        text: "Realm of clarity, control, and still time — HARUKA’s ice core."
+      },
+      "glass-thread": {
+        name: "The Glass Thread",
+        text: "Realm of emotion, duality, and reflection — XIAO’s mirror core."
+      },
+      "bloom-spiral": {
+        name: "The Bloom Spiral",
+        text: "Realm of joy, care, and growth — NIRIN’s flare core."
+      }
+    };
+
+    document.querySelectorAll('.realm').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.info;
+        const info = realmData[key];
+        document.querySelector('.realm-title').textContent = info.name;
+        document.querySelector('.realm-description').textContent = info.text;
+      });
+    });
+  </script>
 </body>
 </html>
