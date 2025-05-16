@@ -4,63 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LU●MINA6 - Home</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <style>
-    .orbit-portal {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #central-logo {
-      position: absolute;
-      z-index: 10;
-    }
-
-    .orbit-rotation {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      animation: spin 20s linear infinite;
-      border-radius: 50%;
-    }
-
-    .planet {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .planet img {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 0.3rem;
-    }
-
-    .planet span {
-      font-size: 0.75rem;
-      color: white;
-    }
-
-    .planet:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 15px 5px rgba(255,255,255,0.6);
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="galaxy-background">
@@ -74,35 +18,35 @@
     </div>
 
     <div class="orbit-rotation">
-      <a href="pages/members.html" class="planet" style="top: 0%; left: 50%; transform: translate(-50%, -50%) rotate(0deg) translateY(-200px);">
+      <a href="pages/members.html" class="planet" style="--angle: 0deg;">
         <img src="assets/images/ui/LUMINA6_Member_Profiles.png" alt="Members Icon" />
         <span>Members</span>
       </a>
-      <a href="pages/discography.html" class="planet" style="top: 25%; left: 85%; transform: translate(-50%, -50%) rotate(45deg) translateY(-200px);">
+      <a href="pages/discography.html" class="planet" style="--angle: 45deg;">
         <img src="assets/images/ui/LUMINA6_Discography.png" alt="Discography Icon" />
         <span>Discography</span>
       </a>
-      <a href="pages/tour.html" class="planet" style="top: 75%; left: 85%; transform: translate(-50%, -50%) rotate(90deg) translateY(-200px);">
+      <a href="pages/tour.html" class="planet" style="--angle: 90deg;">
         <img src="assets/images/ui/LUMINA6_Tour_Logo.png" alt="Tour Icon" />
         <span>Tour</span>
       </a>
-      <a href="pages/music-player.html" class="planet" style="top: 100%; left: 50%; transform: translate(-50%, -50%) rotate(135deg) translateY(-200px);">
+      <a href="pages/music-player.html" class="planet" style="--angle: 135deg;">
         <img src="assets/images/ui/LUMINA6_Music_Interface.png" alt="Music Icon" />
         <span>Music</span>
       </a>
-      <a href="pages/booklet.html" class="planet" style="top: 75%; left: 15%; transform: translate(-50%, -50%) rotate(180deg) translateY(-200px);">
-        <img src="assets/images/ui/LUMINA6_Booklet.png" alt="Lyrics Icon" />
+      <a href="pages/digital-booklets.html" class="planet" style="--angle: 180deg;">
+        <img src="assets/images/ui/LUMINA6_Booklets.png" alt="Lyrics Icon" />
         <span>Lyrics</span>
       </a>
-      <a href="pages/quizzes.html" class="planet" style="top: 25%; left: 15%; transform: translate(-50%, -50%) rotate(225deg) translateY(-200px);">
+      <a href="pages/quizzes.html" class="planet" style="--angle: 225deg;">
         <img src="assets/images/ui/LUMINA6_Quiz.png" alt="Quizzes Icon" />
         <span>Quizzes</span>
       </a>
-      <a href="pages/countdowns.html" class="planet" style="top: 0%; left: 50%; transform: translate(-50%, -50%) rotate(270deg) translateY(-200px);">
+      <a href="pages/countdowns.html" class="planet" style="--angle: 270deg;">
         <img src="assets/images/ui/LUMINA6_COUNTDOWN.png" alt="Countdowns Icon" />
         <span>Countdown</span>
       </a>
-      <a href="pages/universe.html" class="planet" style="top: 25%; left: 85%; transform: translate(-50%, -50%) rotate(315deg) translateY(-200px);">
+      <a href="pages/universe.html" class="planet" style="--angle: 315deg;">
         <img src="assets/images/ui/LUMINA6_Univers.png" alt="Universe Icon" />
         <span>Universe</span>
       </a>
