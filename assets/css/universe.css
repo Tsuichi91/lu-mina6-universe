@@ -1,0 +1,121 @@
+/* === UNIVERSE STYLES === */
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(ellipse at center, #0a0a1a 0%, #000010 100%);
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.universe-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.central-logo {
+  width: 120px;
+  height: 120px;
+  z-index: 10;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.universe-orbit {
+  position: absolute;
+  width: 60vmin;
+  height: 60vmin;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.planet {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: sparkle 3s infinite ease-in-out;
+}
+
+.planet:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px 4px #8df;
+}
+
+.realm-info {
+  position: absolute;
+  bottom: 3rem;
+  text-align: center;
+  max-width: 400px;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 15px rgba(108, 240, 255, 0.2);
+  animation: fadeIn 0.6s ease;
+}
+
+.realm-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.realm-description {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* === ORBIT POSITIONS === */
+.ether   { top: 0%;   left: 50%; transform: translate(-50%, -50%); color: #9ef; }
+.earth   { top: 25%;  left: 90%; transform: translate(-50%, -50%); color: #7f7; }
+.flame   { top: 75%;  left: 90%; transform: translate(-50%, -50%); color: #f88; }
+.ice     { top: 100%; left: 50%; transform: translate(-50%, -50%); color: #acf; }
+.mirror  { top: 75%;  left: 10%; transform: translate(-50%, -50%); color: #eee; }
+.flare   { top: 25%;  left: 10%; transform: translate(-50%, -50%); color: #fcf; }
+
+/* === ANIMATIONS === */
+@keyframes sparkle {
+  0%   { text-shadow: 0 0 6px #fff, 0 0 12px #6cf; }
+  50%  { text-shadow: 0 0 12px #fff, 0 0 20px #9ef; }
+  100% { text-shadow: 0 0 6px #fff, 0 0 12px #6cf; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .planet {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  .central-logo {
+    width: 80px;
+    height: 80px;
+  }
+  .realm-info {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
