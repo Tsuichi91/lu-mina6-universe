@@ -72,7 +72,7 @@
     </div>
   </div>
   <div class="shooting-star"></div>
-  <script>
+<script>
   function createShootingStar() {
     const star = document.createElement('div');
     star.className = 'shooting-star';
@@ -81,25 +81,30 @@
     star.style.top = `${Math.random() * window.innerHeight * 0.5}px`;
     star.style.left = `${Math.random() * window.innerWidth * 0.5}px`;
 
-    // Zufällige Flugrichtung in Grad
+    // Zufällige Richtung (Winkel in Grad)
     const angle = Math.floor(Math.random() * 360);
-    const duration = 2 + Math.random() * 2;
-    const scale = 0.5 + Math.random() * 1.5;
+    const duration = 1.5 + Math.random() * 2;
+    const scale = 0.4 + Math.random() * 1.2;
 
-    // Setze individuelle Animation via transform-origin
-    star.style.animation = `shoot-${angle} ${duration}s linear forwards`;
+    // Keyframe-Namen eindeutig benennen
+    const animName = `shoot-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    star.style.animation = `${animName} ${duration}s linear forwards`;
     star.style.transform = `scale(${scale})`;
 
-    // Füge dynamisches Keyframe-Stylesheet hinzu (nur wenn nicht vorhanden)
+    // Zielposition berechnen
+    const x = Math.cos(angle * Math.PI / 180) * 1500;
+    const y = Math.sin(angle * Math.PI / 180) * 1500;
+
+    // Dynamisch Keyframes hinzufügen
     const styleSheet = document.styleSheets[0];
     styleSheet.insertRule(`
-      @keyframes shoot-${angle} {
+      @keyframes ${animName} {
         0% {
           transform: translate(0, 0) rotate(${angle}deg) scale(${scale});
           opacity: 0.9;
         }
         100% {
-          transform: translate(${Math.cos(angle * Math.PI / 180) * 1000}px, ${Math.sin(angle * Math.PI / 180) * 1000}px) rotate(${angle}deg) scale(0.3);
+          transform: translate(${x}px, ${y}px) rotate(${angle}deg) scale(0.2);
           opacity: 0;
         }
       }
@@ -107,14 +112,16 @@
 
     document.body.appendChild(star);
 
-    // Entfernen nach Flug
-    setTimeout(() => {
-      star.remove();
-    }, duration * 1000 + 500);
+    // Entfernen nach Ablauf
+    setTimeout(() => star.remove(), duration * 1000 + 100);
   }
 
-  // Wiederholt alle 2–3 Sekunden eine Sternschnuppe
-  setInterval(createShootingStar, 2000);
+  // Alle 1,5 Sekunden 3 neue Shooting Stars leicht versetzt
+  setInterval(() => {
+    for (let i = 0; i < 3; i++) {
+      setTimeout(createShootingStar, i * 250);
+    }
+  }, 1500);
 </script>
 </body>
 </html>
