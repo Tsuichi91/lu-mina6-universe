@@ -116,23 +116,27 @@ body {
   position: absolute;
   top: -10px;
   left: -100px;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   background: white;
-  box-shadow: 0 0 6px 2px white;
-  opacity: 0.8;
+  box-shadow:
+    0 0 8px 2px #ffffff,
+    0 0 15px 5px #a0c4ff,
+    0 0 25px 10px rgba(255, 255, 255, 0.5);
+  opacity: 0.9;
   border-radius: 50%;
   animation: shoot 3s linear infinite;
   z-index: -1;
+  filter: blur(0.5px);
 }
 
 @keyframes shoot {
   0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.8;
+    transform: translate(0, 0) scale(1) rotate(45deg);
+    opacity: 0.9;
   }
   100% {
-    transform: translate(100vw, 100vh) scale(0.5);
+    transform: translate(100vw, 100vh) scale(0.3) rotate(45deg);
     opacity: 0;
   }
 }
