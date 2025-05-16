@@ -39,18 +39,23 @@ body {
   100% { background-position: 200% 50%; }
 }
 
-.orbit-rotation {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  animation: rotateOrbit 40s linear infinite;
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  animation: rotateOrbit var(--duration, 40s) linear infinite;
 }
 
 .planet {
   position: absolute;
+  top: 0;
+  left: 50%;
   width: 80px;
   height: 80px;
-  transform: rotate(var(--angle)) translate(300px) rotate(calc(-1 * var(--angle)));
+  transform: translate(-50%, -50%) translateY(-300px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,25 +70,23 @@ body {
   width: 48px;
   height: 48px;
   margin-bottom: 0.3rem;
-  transform: rotate(calc(-1 * var(--angle)));
   pointer-events: auto;
 }
 
 .planet span {
   font-size: 0.75rem;
   color: white;
-  transform: rotate(calc(-1 * var(--angle)));
   pointer-events: auto;
 }
 
 .planet:hover {
-  transform: rotate(var(--angle)) translate(300px) rotate(calc(-1 * var(--angle))) scale(1.15);
+  transform: translate(-50%, -50%) translateY(-300px) scale(1.15);
   box-shadow: 0 0 15px 5px rgba(255,255,255,0.6);
 }
 
 @keyframes rotateOrbit {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* === OPTIONAL BACKGROUND EFFECTS === */
