@@ -2,19 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Countdowns – LU●MINA6</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LU●MINA6 – Countdowns</title>
   <link rel="stylesheet" href="../style.css" />
-  <script defer src="../script.js"></script>
+  <link rel="stylesheet" href="../assets/css/countdowns.css" />
 </head>
 <body>
+  <div class="galaxy-background">
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+  </div>
+
   <header>
-    <a href="../index.html" class="logo">← Home</a>
-    <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+    <a href="../index.html" class="back-button">← Back to Portal</a>
   </header>
-  <main style="padding: 2rem;">
-    <h1>Countdowns</h1>
-    <p>Upcoming events and comebacks countdowns will appear here.</p>
+
+  <main class="countdown-container">
+    <h1 class="page-title">Countdowns</h1>
+
+    <section class="countdown-box" data-deadline="2026-03-07T18:00:00">
+      <h2>World Tour Kickoff – Seoul 🇰🇷</h2>
+      <p class="text">Get Ready to Shine!</p>
+      <div class="timer"></div>
+    </section>
+
+    <section class="countdown-box" data-deadline="2026-08-15T20:00:00">
+      <h2>Global Livestream – Finale</h2>
+      <p class="text">🌐 LIVE from Seoul</p>
+      <div class="timer"></div>
+    </section>
+
+    <section class="countdown-box" data-deadline="2025-06-01T00:00:00">
+      <h2>Next Single Release: "Rise Up - Special Project Single"</h2>
+      <p class="text">Get Ready to Rise Up!</p>
+      <div class="timer"></div>
+    </section>
+
+    <section class="countdown-box" data-deadline="2025-06-01T00:00:00">
+      <h2>Upcoming MV Premiere: "RISE UP"</h2>
+      <p class="text">Get Ready to Rise Up and Dance!</p>
+      <div class="timer"></div>
+    </section>
   </main>
+
+  <script>
+    function updateCountdowns() {
+      document.querySelectorAll('.countdown-box').forEach(box => {
+        const deadline = new Date(box.getAttribute('data-deadline')).getTime();
+        const timer = box.querySelector('.timer');
+
+        function update() {
+          const now = new Date().getTime();
+          const distance = deadline - now;
+
+          if (distance < 0) {
+            timer.innerHTML = "🚀 It's happening!";
+            return;
+          }
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          timer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        update();
+        setInterval(update, 1000);
+      });
+    }
+
+    updateCountdowns();
+  </script>
 </body>
 </html>
