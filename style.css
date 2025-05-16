@@ -20,20 +20,20 @@ body {
 
 #central-logo {
   position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  font-size: 3.5rem;
+  z-index: 0; /* ↓ ganz nach unten */
+  font-size: 2.5rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   background: linear-gradient(90deg, #5ee7df, #b490ca, #f5a9b8, #c2f0ff, #ffb347);
-  background-size: 200%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
   animation: glitter 6s linear infinite;
   text-shadow: 0 0 12px rgba(255,255,255,0.5);
+  pointer-events: none; /* ← wichtig: damit Klicks durchgehen */
 }
+
 
 @keyframes glitter {
   0% { background-position: 0% 50%; }
