@@ -205,7 +205,17 @@
     </ul>
   </div>
 </div>
-  </main>
+    <div id="now-playing-box" class="now-playing-box">
+    <img id="now-cover" class="now-cover" src="../assets/images/albums/Luminate_Album_Cover.png" alt="Now Playing Cover">
+    <div class="now-info">
+      <div class="track-title" id="now-title">01. Starlight Code</div>
+      <div class="track-meta" id="now-meta">From: LUMINATE</div>
+      <div class="equalizer" id="equalizer">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</main>
 
   <script>
     const tabs = document.querySelectorAll('.tab-btn');
@@ -224,10 +234,29 @@
     function playTrack(folder, trackName) {
       const audio = document.getElementById('player');
       const source = document.getElementById('audio-source');
+      const nowTitle = document.getElementById('now-title');
+      const nowMeta = document.getElementById('now-meta');
+      const nowCover = document.getElementById('now-cover');
+      const equalizer = document.getElementById('equalizer');
+
       source.src = `../assets/audio/player/albums/${folder}/${trackName}.mp3`;
+      nowTitle.textContent = trackName;
+      nowMeta.textContent = `From: ${folder.replace(/-/g, ' ').toUpperCase()}`;
+
+      let coverPath = `../assets/images/albums/${trackName.split('.')[0]}.png`;
+      nowCover.src = coverPath;
+
       audio.load();
       audio.play();
+
+      equalizer.classList.remove('paused');
     }
+      document.getElementById('player').addEventListener('pause', () => {
+      document.getElementById('equalizer').classList.add('paused');
+    });
+    document.getElementById('player').addEventListener('play', () => {
+      document.getElementById('equalizer').classList.remove('paused');
+    });
   </script>
 </body>
 </html>
