@@ -1,163 +1,102 @@
-/* === GALAXY BACKGROUND === */
+/* === ORBIT STARTPAGE STYLING === */
 
-body, html {
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  background-color: #000;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #050b1f;
+  overflow: hidden;
   color: white;
-  overflow: hidden;
 }
-
-.galaxy-background {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.stars {
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(white 1px, transparent 1px),
-    radial-gradient(white 1px, transparent 1px);
-  background-size: 3px 3px;
-  background-position: 0 0, 1.5px 1.5px;
-  opacity: 0.15;
-  animation: starfield 100s linear infinite;
-}
-
-@keyframes starfield {
-  from { transform: translateY(0); }
-  to { transform: translateY(-2000px); }
-}
-
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 80px;
-  background: linear-gradient(-45deg, white, transparent);
-  top: -10%;
-  left: 100%;
-  animation: shoot 12s infinite ease-in-out;
-  opacity: 0.6;
-}
-
-@keyframes shoot {
-  0% { transform: translate(0, 0) rotate(-45deg); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translate(-150vw, 150vh) rotate(-45deg); opacity: 0; }
-}
-
-/* === ORBIT PORTAL === */
 
 .orbit-portal {
   position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  pointer-events: none;
-  flex-direction: column;
+  justify-content: center;
 }
 
 #central-logo {
-  position: relative;
-  z-index: 1;
-  pointer-events: auto;
-  margin: 2rem 0;
+  position: absolute;
+  z-index: 10;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #central-logo img {
-  width: 140px;
-  height: 140px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  animation: pulse 4s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-.orbit-group {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  pointer-events: auto;
-  z-index: 2;
-}
-
-.orbit-group.upper {
-  margin-bottom: 2rem;
-}
-
-.orbit-group.lower {
-  margin-top: 2rem;
+.orbit-rotation {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  animation: rotateOrbit 40s linear infinite;
 }
 
 .planet {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  transform: rotate(var(--angle)) translate(220px) rotate(calc(-1 * var(--angle)));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90px;
-  height: 90px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
   text-align: center;
-  text-decoration: none;
-  color: white;
-  font-size: 0.6rem;
-  font-weight: bold;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  pointer-events: auto;
-  overflow: hidden;
-  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .planet img {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
+  width: 48px;
+  height: 48px;
   margin-bottom: 0.3rem;
 }
 
 .planet span {
-  position: absolute;
-  bottom: 8px;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
+  color: white;
 }
 
 .planet:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 12px 4px #a0c4ff, 0 0 30px 8px rgba(173,216,230,0.5);
-  background: linear-gradient(145deg, #ffffff22, #ffffff0a);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: rotate(var(--angle)) translate(220px) rotate(calc(-1 * var(--angle))) scale(1.15);
+  box-shadow: 0 0 15px 5px rgba(255,255,255,0.6);
 }
 
-@media (max-width: 600px) {
-  .planet {
-    width: 64px;
-    height: 64px;
-    font-size: 0.5rem;
-  }
-  .planet img {
-    width: 24px;
-    height: 24px;
-  }
-  #central-logo img {
-    width: 100px;
-    height: 100px;
-  }
+@keyframes rotateOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === OPTIONAL BACKGROUND EFFECTS === */
+.galaxy-background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+}
+
+.stars {
+  width: 100%;
+  height: 100%;
+  background: transparent url('../images/stars.png') repeat;
+  animation: starsMove 100s linear infinite;
+}
+
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 10000px; }
+}
+
+.shooting-star {
+  display: none; /* For future effects */
 }
