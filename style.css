@@ -21,10 +21,11 @@ body {
 #central-logo {
   position: absolute;
   z-index: 10;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   background: linear-gradient(90deg, #5ee7df, #b490ca, #f5a9b8, #c2f0ff, #ffb347);
+  background-size: 200%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -38,25 +39,29 @@ body {
   100% { background-position: 200% 50%; }
 }
 
-.orbit-rotation {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  animation: rotateOrbit 40s linear infinite;
+/* Orbit Kreise einzeln */
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--distance);
+  height: var(--distance);
+  margin-top: calc(var(--distance) / -2);
+  margin-left: calc(var(--distance) / -2);
+  animation: rotateOrbit var(--duration) linear infinite;
 }
 
 .planet {
   position: absolute;
-  width: 80px;
-  height: 80px;
-  transform: rotate(var(--angle)) translate(220px) rotate(calc(-1 * var(--angle)));
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .planet img {
@@ -71,7 +76,7 @@ body {
 }
 
 .planet:hover {
-  transform: rotate(var(--angle)) translate(220px) rotate(calc(-1 * var(--angle))) scale(1.15);
+  transform: translate(-50%, -50%) scale(1.2);
   box-shadow: 0 0 15px 5px rgba(255,255,255,0.6);
 }
 
@@ -80,7 +85,7 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* === OPTIONAL BACKGROUND EFFECTS === */
+/* === BACKGROUND EFFECTS === */
 .galaxy-background {
   position: fixed;
   top: 0; left: 0;
@@ -93,15 +98,11 @@ body {
 .stars {
   width: 100%;
   height: 100%;
-  background: transparent url('../images/stars.png') repeat;
+  background: transparent url('assets/images/stars.png') repeat;
   animation: starsMove 100s linear infinite;
 }
 
 @keyframes starsMove {
   from { background-position: 0 0; }
   to { background-position: -10000px 10000px; }
-}
-
-.shooting-star {
-  display: none; /* For future effects */
 }
