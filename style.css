@@ -53,26 +53,32 @@ body {
 
 .planet {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  transform: rotate(var(--angle)) translate(220px);
+  transform-origin: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  z-index: 5;
 }
 
 .planet img {
   width: 48px;
   height: 48px;
   margin-bottom: 0.3rem;
+  transform: rotate(calc(-1 * var(--angle))); /* hält das Bild aufrecht */
 }
 
 .planet span {
   font-size: 0.75rem;
   color: white;
+  transform: rotate(calc(-1 * var(--angle))); /* hält den Text aufrecht */
 }
 
 .planet:hover {
