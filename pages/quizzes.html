@@ -136,123 +136,143 @@
     }
     resultBox.innerHTML = resultText;
   });
+
+// Personality test logic
+const personalityForm = document.getElementById('personality-form');
+const personalityResult = document.getElementById('personality-result');
+
+if (personalityForm) {
+  personalityForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const selections = personalityForm.querySelectorAll('input[type="radio"]:checked');
+    const counts = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+    selections.forEach(input => {
+      if (counts.hasOwnProperty(input.value)) {
+        counts[input.value]++;
+      }
+    });
+
+    let topType = 'A';
+    let max = 0;
+    for (const type in counts) {
+      if (counts[type] > max) {
+        max = counts[type];
+        topType = type;
+      }
+    }
+
+    const results = {
+      A: '<strong>🔮 SKY (Ether Core)</strong><br>You are intuitive, dreamy, deeply spiritual. Symbol: 🜁 | Color: Violet Mist',
+      B: '<strong>🌍 JIHO (Earth Core)</strong><br>You are grounded, dependable, and fiercely loyal. Symbol: 🜃 | Color: Forest Green',
+      C: '<strong>🔥 LEO (Flame Core)</strong><br>Bold, unapologetic, and brave. Symbol: 🜂 | Color: Gold Crimson',
+      D: '<strong>❄️ HARUKA (Ice Core)</strong><br>Quietly brilliant, elegant, and poetic. Symbol: 🜄 | Color: Icy Blue',
+      E: '<strong>🪞 XIAO (Mirror Core)</strong><br>You reflect emotions and uncover truths. Symbol: 🪞 | Color: Mirror Silver',
+      F: '<strong>🌈 NIRIN (Flare Core)</strong><br>You are joy, empathy, and light. Symbol: 🌈 | Color: Rainbow Gold'
+    };
+
+    personalityResult.innerHTML = `<h2>Your Core: ${topType}</h2><p>${results[topType]}</p>`;
+  });
+}
 </script>
     </div>
 
     <div class="tab-content" id="personality">
   <h2>Which LUMACORE Energy Flows Through You?</h2>
-  <p class="quiz-intro">Answer each question honestly and count how many times you choose each letter. At the end, match your most frequent letter to your LUMACORE!</p>
-  <ol>
-    <li>In a group, you’re most likely to be...
-      <ul>
-        <li>A) The dreamer with big ideas</li>
-        <li>B) The quiet one who holds everyone steady</li>
-        <li>C) The loud, confident hype energy</li>
-        <li>D) The observant, poetic soul</li>
-        <li>E) The mirror — you reflect others' emotions</li>
-        <li>F) The one who uplifts, hugs, and laughs loudest</li>
-      </ul>
-    </li>
-    <li>How do you handle conflict?
-      <ul>
-        <li>A) Retreat, then return with clarity</li>
-        <li>B) Stay calm, speak factually</li>
-        <li>C) Face it head-on, no filter</li>
-        <li>D) Try to understand, write your thoughts down</li>
-        <li>E) Absorb too much, cry later</li>
-        <li>F) Talk it out, then spread positive energy</li>
-      </ul>
-    </li>
-    <li>Your fashion style is closest to...
-      <ul>
-        <li>A) Flowy, dreamy, layers</li>
-        <li>B) Earth tones, comfort, simple</li>
-        <li>C) Bold, sharp, experimental</li>
-        <li>D) Soft, tailored, cool</li>
-        <li>E) Reflective, asymmetrical, statement pieces</li>
-        <li>F) Bright, mixed, joyful and loud</li>
-      </ul>
-    </li>
-    <li>A lyric that feels like you:
-      <ul>
-        <li>A) “I live in the in-between”</li>
-        <li>B) “I’m grounded like no one else”</li>
-        <li>C) “I burn for what I believe”</li>
-        <li>D) “Silence says more than words”</li>
-        <li>E) “I see your truth before you speak”</li>
-        <li>F) “We shine because we feel”</li>
-      </ul>
-    </li>
-    <li>Your ideal power in a magical world would be...
-      <ul>
-        <li>A) Time travel through memory</li>
-        <li>B) Controlling gravity</li>
-        <li>C) Fire fists and electric energy</li>
-        <li>D) Freezing time to observe</li>
-        <li>E) Reading emotions through light</li>
-        <li>F) Creating color from sound</li>
-      </ul>
-    </li>
-    <li>How do you show love?
-      <ul>
-        <li>A) Writing something beautiful</li>
-        <li>B) Acts of service and quiet presence</li>
-        <li>C) Fierce protection</li>
-        <li>D) Listening and noticing the small things</li>
-        <li>E) Making people feel seen</li>
-        <li>F) Physical affection and loud support</li>
-      </ul>
-    </li>
-    <li>What makes you feel seen?
-      <ul>
-        <li>A) Someone understanding your weird side</li>
-        <li>B) Someone depending on you</li>
-        <li>C) Being celebrated out loud</li>
-        <li>D) Someone noticing the detail no one else does</li>
-        <li>E) Eye contact with no words</li>
-        <li>F) Being held like nothing else matters</li>
-      </ul>
-    </li>
-    <li>Which phrase speaks to you most?
-      <ul>
-        <li>A) "Some voices live in silence — mine lives in stars."</li>
-        <li>B) "I fall like stone. Solid. Unmoved."</li>
-        <li>C) "I don’t burn for them. I burn for us."</li>
-        <li>D) "Frozen doesn’t mean cold. It means deliberate."</li>
-        <li>E) "If you look long enough, the reflection speaks back."</li>
-        <li>F) "I don’t need to shine alone. I shine through you."</li>
-      </ul>
-    </li>
-    <li>A place that feels like home:
-      <ul>
-        <li>A) A misty field at sunrise</li>
-        <li>B) A quiet mountain path</li>
-        <li>C) A concert crowd screaming your name</li>
-        <li>D) A hidden lake in winter</li>
-        <li>E) A city window in the rain</li>
-        <li>F) A warm kitchen full of laughter</li>
-      </ul>
-    </li>
-    <li>You rise up when...
-      <ul>
-        <li>A) You’re reminded of your purpose</li>
-        <li>B) Someone needs you</li>
-        <li>C) You’ve had enough — and you fight back</li>
-        <li>D) You finally feel safe</li>
-        <li>E) You realize you’ve been loved all along</li>
-        <li>F) You see someone else’s light</li>
-      </ul>
-    </li>
-  </ol>
-  <p><strong>🌟 RESULTS: Count your letters!</strong></p>
-  <ul>
-    <li>🔮 Mostly A — <strong>SKY (Ether Core)</strong><br>You are intuitive, dreamy, deeply spiritual. You exist in-between ideas and realities.<br>Symbol: 🜁 | Color: Violet Mist</li>
-    <li>🌍 Mostly B — <strong>JIHO (Earth Core)</strong><br>You are grounded, dependable, and fiercely loyal.<br>Symbol: 🜃 | Color: Forest Green</li>
-    <li>🔥 Mostly C — <strong>LEO (Flame Core)</strong><br>Bold, unapologetic, and brave.<br>Symbol: 🜂 | Color: Gold Crimson</li>
-    <li>❄️ Mostly D — <strong>HARUKA (Ice Core)</strong><br>Quietly brilliant, elegant, and poetic.<br>Symbol: 🜄 | Color: Icy Blue</li>
-    <li>🪞 Mostly E — <strong>XIAO (Mirror Core)</strong><br>You reflect emotions and uncover truths.<br>Symbol: 🪞 | Color: Mirror Silver</li>
-    <li>🌈 Mostly F — <strong>NIRIN (Flare Core)</strong><br>You are joy, empathy, and light.<br>Symbol: 🌈 | Color: Rainbow Gold</li>
-  </ul>
+  <form id="personality-form">
+    <div class="quiz-question">
+      <p>1. In a group, you’re most likely to be...</p>
+      <label><input type="radio" name="q1" value="A">A) The dreamer with big ideas</label><br>
+      <label><input type="radio" name="q1" value="B">B) The quiet one who holds everyone steady</label><br>
+      <label><input type="radio" name="q1" value="C">C) The loud, confident hype energy</label><br>
+      <label><input type="radio" name="q1" value="D">D) The observant, poetic soul</label><br>
+      <label><input type="radio" name="q1" value="E">E) The mirror — you reflect others' emotions</label><br>
+      <label><input type="radio" name="q1" value="F">F) The one who uplifts, hugs, and laughs loudest</label>
+    </div>
+    <div class="quiz-question">
+  <p>2. How do you handle conflict?</p>
+  <label><input type="radio" name="q2" value="A">A) Retreat, then return with clarity</label><br>
+  <label><input type="radio" name="q2" value="B">B) Stay calm, speak factually</label><br>
+  <label><input type="radio" name="q2" value="C">C) Face it head-on, no filter</label><br>
+  <label><input type="radio" name="q2" value="D">D) Try to understand, write your thoughts down</label><br>
+  <label><input type="radio" name="q2" value="E">E) Absorb too much, cry later</label><br>
+  <label><input type="radio" name="q2" value="F">F) Talk it out, then spread positive energy</label>
+</div>
+<div class="quiz-question">
+  <p>3. Your fashion style is closest to...</p>
+  <label><input type="radio" name="q3" value="A">A) Flowy, dreamy, layers</label><br>
+  <label><input type="radio" name="q3" value="B">B) Earth tones, comfort, simple</label><br>
+  <label><input type="radio" name="q3" value="C">C) Bold, sharp, experimental</label><br>
+  <label><input type="radio" name="q3" value="D">D) Soft, tailored, cool</label><br>
+  <label><input type="radio" name="q3" value="E">E) Reflective, asymmetrical, statement pieces</label><br>
+  <label><input type="radio" name="q3" value="F">F) Bright, mixed, joyful and loud</label>
+</div>
+<div class="quiz-question">
+  <p>4. A lyric that feels like you:</p>
+  <label><input type="radio" name="q4" value="A">A) “I live in the in-between”</label><br>
+  <label><input type="radio" name="q4" value="B">B) “I’m grounded like no one else”</label><br>
+  <label><input type="radio" name="q4" value="C">C) “I burn for what I believe”</label><br>
+  <label><input type="radio" name="q4" value="D">D) “Silence says more than words”</label><br>
+  <label><input type="radio" name="q4" value="E">E) “I see your truth before you speak”</label><br>
+  <label><input type="radio" name="q4" value="F">F) “We shine because we feel”</label>
+</div>
+<div class="quiz-question">
+  <p>5. Your ideal power in a magical world would be...</p>
+  <label><input type="radio" name="q5" value="A">A) Time travel through memory</label><br>
+  <label><input type="radio" name="q5" value="B">B) Controlling gravity</label><br>
+  <label><input type="radio" name="q5" value="C">C) Fire fists and electric energy</label><br>
+  <label><input type="radio" name="q5" value="D">D) Freezing time to observe</label><br>
+  <label><input type="radio" name="q5" value="E">E) Reading emotions through light</label><br>
+  <label><input type="radio" name="q5" value="F">F) Creating color from sound</label>
+</div>
+<div class="quiz-question">
+  <p>6. How do you show love?</p>
+  <label><input type="radio" name="q6" value="A">A) Writing something beautiful</label><br>
+  <label><input type="radio" name="q6" value="B">B) Acts of service and quiet presence</label><br>
+  <label><input type="radio" name="q6" value="C">C) Fierce protection</label><br>
+  <label><input type="radio" name="q6" value="D">D) Listening and noticing the small things</label><br>
+  <label><input type="radio" name="q6" value="E">E) Making people feel seen</label><br>
+  <label><input type="radio" name="q6" value="F">F) Physical affection and loud support</label>
+</div>
+<div class="quiz-question">
+  <p>7. What makes you feel seen?</p>
+  <label><input type="radio" name="q7" value="A">A) Someone understanding your weird side</label><br>
+  <label><input type="radio" name="q7" value="B">B) Someone depending on you</label><br>
+  <label><input type="radio" name="q7" value="C">C) Being celebrated out loud</label><br>
+  <label><input type="radio" name="q7" value="D">D) Someone noticing the detail no one else does</label><br>
+  <label><input type="radio" name="q7" value="E">E) Eye contact with no words</label><br>
+  <label><input type="radio" name="q7" value="F">F) Being held like nothing else matters</label>
+</div>
+<div class="quiz-question">
+  <p>8. Which phrase speaks to you most?</p>
+  <label><input type="radio" name="q8" value="A">A) "Some voices live in silence — mine lives in stars."</label><br>
+  <label><input type="radio" name="q8" value="B">B) "I fall like stone. Solid. Unmoved."</label><br>
+  <label><input type="radio" name="q8" value="C">C) "I don’t burn for them. I burn for us."</label><br>
+  <label><input type="radio" name="q8" value="D">D) "Frozen doesn’t mean cold. It means deliberate."</label><br>
+  <label><input type="radio" name="q8" value="E">E) "If you look long enough, the reflection speaks back."</label><br>
+  <label><input type="radio" name="q8" value="F">F) "I don’t need to shine alone. I shine through you."</label>
+</div>
+<div class="quiz-question">
+  <p>9. A place that feels like home:</p>
+  <label><input type="radio" name="q9" value="A">A) A misty field at sunrise</label><br>
+  <label><input type="radio" name="q9" value="B">B) A quiet mountain path</label><br>
+  <label><input type="radio" name="q9" value="C">C) A concert crowd screaming your name</label><br>
+  <label><input type="radio" name="q9" value="D">D) A hidden lake in winter</label><br>
+  <label><input type="radio" name="q9" value="E">E) A city window in the rain</label><br>
+  <label><input type="radio" name="q9" value="F">F) A warm kitchen full of laughter</label>
+</div>
+<div class="quiz-question">
+  <p>10. You rise up when...</p>
+  <label><input type="radio" name="q10" value="A">A) You’re reminded of your purpose</label><br>
+  <label><input type="radio" name="q10" value="B">B) Someone needs you</label><br>
+  <label><input type="radio" name="q10" value="C">C) You’ve had enough — and you fight back</label><br>
+  <label><input type="radio" name="q10" value="D">D) You finally feel safe</label><br>
+  <label><input type="radio" name="q10" value="E">E) You realize you’ve been loved all along</label><br>
+  <label><input type="radio" name="q10" value="F">F) You see someone else’s light</label>
+</div>
+    <!-- For brevity, only question 1 is shown. Add the remaining questions using same structure -->
+    <button type="submit" class="quiz-submit">Get Result</button>
+  </form>
+  <div id="personality-result" class="quiz-result"></div>
 </div>
   </main>
 
