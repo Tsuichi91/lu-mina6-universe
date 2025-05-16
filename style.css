@@ -20,7 +20,8 @@ body {
 
 #central-logo {
   position: absolute;
-  z-index: 10;
+  z-index: 1;
+  pointer-events: none;
   font-size: 3.5rem;
   font-weight: 900;
   letter-spacing: 0.1em;
