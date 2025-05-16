@@ -1,0 +1,116 @@
+/* === DISCOGRAPHY.CSS === */
+
+.discography-container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 1;
+  position: relative;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #cbe4ff;
+  text-shadow: 0 0 10px rgba(120, 200, 255, 0.4);
+}
+
+.release-section {
+  margin-bottom: 4rem;
+}
+
+.release-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.release-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(120, 200, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.release-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 30px 8px rgba(173, 216, 230, 0.3), 0 0 60px rgba(0, 153, 255, 0.2);
+}
+
+.release-card img {
+  width: 100%;
+  max-width: 180px;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(120, 200, 255, 0.1);
+}
+
+.release-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: #a0d8ff;
+  text-shadow: 0 0 4px rgba(120, 200, 255, 0.3);
+}
+
+.release-card p {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+  color: #e0f4ff;
+}
+
+.release-card ol {
+  text-align: left;
+  padding-left: 1.2rem;
+  margin-top: 1rem;
+  color: #cceeff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.release-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #a5f3ff;
+  text-decoration: none;
+  border-bottom: 1px dashed #a5f3ff;
+  transition: color 0.3s;
+}
+
+.release-link:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+  .release-card img {
+    max-width: 140px;
+  }
+  .release-card h3 {
+    font-size: 1rem;
+  }
+  .release-card ol {
+    font-size: 0.8rem;
+  }
+}
