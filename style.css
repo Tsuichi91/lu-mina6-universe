@@ -26,6 +26,7 @@ body {
   font-weight: 900;
   letter-spacing: 0.1em;
   background: linear-gradient(90deg, #5ee7df, #b490ca, #f5a9b8, #c2f0ff, #ffb347);
+  background-size: 200%; /* <-- Das ist neu */
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -53,8 +54,8 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
   transform: translate(-50%, -50%) translateY(-250px);
   display: flex;
   flex-direction: column;
@@ -67,8 +68,8 @@ body {
 }
 
 .planet img {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   margin-bottom: 0.3rem;
   pointer-events: auto;
 }
