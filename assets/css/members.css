@@ -2,15 +2,16 @@
 
 body {
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .members-container {
   padding: 4rem 2rem;
-  max-width: 100%;
-  overflow-x: auto;
-  white-space: nowrap;
-  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
   z-index: 1;
+  position: relative;
+  text-align: center;
 }
 
 .page-title {
@@ -20,21 +21,15 @@ body {
   letter-spacing: 2px;
   color: #cbe4ff;
   text-shadow: 0 0 10px rgba(120, 200, 255, 0.4);
-  text-align: center;
-  white-space: normal;
 }
 
 .member-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  padding: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
 }
 
 .member-card {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
@@ -45,7 +40,6 @@ body {
   box-shadow: 0 0 20px rgba(120, 200, 255, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  min-width: 260px;
 }
 
 .member-card:hover {
@@ -83,9 +77,18 @@ body {
   margin-top: 0.6rem;
 }
 
+@media (max-width: 900px) {
+  .member-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
   .page-title {
     font-size: 1.5rem;
+  }
+  .member-grid {
+    grid-template-columns: 1fr;
   }
   .member-card {
     padding: 1rem;
