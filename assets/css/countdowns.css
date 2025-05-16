@@ -1,0 +1,77 @@
+/* === COUNTDOWNS.CSS === */
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.countdown-container {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: #cbe4ff;
+  text-shadow: 0 0 10px rgba(120, 200, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 16px rgba(120, 200, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #ffffff;
+}
+
+.countdown-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px 6px rgba(173, 216, 230, 0.2);
+}
+
+.countdown-box h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #a0d8ff;
+  text-shadow: 0 0 6px rgba(120, 200, 255, 0.3);
+}
+
+.countdown-box .text {
+  font-size: 1rem;
+  color: #ffd8ff;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.countdown-box .timer {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+  .countdown-box {
+    padding: 1.5rem;
+  }
+  .countdown-box h2 {
+    font-size: 1.2rem;
+  }
+  .countdown-box .timer {
+    font-size: 1.1rem;
+  }
+}
