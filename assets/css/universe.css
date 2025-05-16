@@ -28,11 +28,12 @@ body {
 
 .universe-orbit {
   position: absolute;
-  width: 60vmin;
-  height: 60vmin;
+  width: 45vmin;
+  height: 45vmin;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 5;
 }
 
 .planet {
@@ -50,6 +51,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   animation: sparkle 3s infinite ease-in-out;
+  z-index: 6;
 }
 
 .planet:hover {
@@ -58,8 +60,9 @@ body {
 }
 
 .realm-info {
-  position: absolute;
-  bottom: 3rem;
+  position: relative;
+  margin-top: auto;
+  margin-bottom: 1.5rem;
   text-align: center;
   max-width: 400px;
   padding: 1.2rem;
@@ -67,6 +70,7 @@ body {
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0 0 15px rgba(108, 240, 255, 0.2);
   animation: fadeIn 0.6s ease;
+  z-index: 4;
 }
 
 .realm-title {
@@ -81,11 +85,11 @@ body {
 
 /* === ORBIT POSITIONS === */
 .ether   { top: 0%;   left: 50%; transform: translate(-50%, -50%); color: #9ef; }
-.earth   { top: 25%;  left: 90%; transform: translate(-50%, -50%); color: #7f7; }
-.flame   { top: 75%;  left: 90%; transform: translate(-50%, -50%); color: #f88; }
+.earth   { top: 20%;  left: 88%; transform: translate(-50%, -50%); color: #7f7; }
+.flame   { top: 80%;  left: 88%; transform: translate(-50%, -50%); color: #f88; }
 .ice     { top: 100%; left: 50%; transform: translate(-50%, -50%); color: #acf; }
-.mirror  { top: 75%;  left: 10%; transform: translate(-50%, -50%); color: #eee; }
-.flare   { top: 25%;  left: 10%; transform: translate(-50%, -50%); color: #fcf; }
+.mirror  { top: 80%;  left: 12%; transform: translate(-50%, -50%); color: #eee; }
+.flare   { top: 20%;  left: 12%; transform: translate(-50%, -50%); color: #fcf; }
 
 /* === ANIMATIONS === */
 @keyframes sparkle {
