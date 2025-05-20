@@ -1,107 +1,104 @@
-html, body {
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: #0a0a0a;
   color: #fff;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
-.galaxy-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: radial-gradient(ellipse at center, #111 0%, #000 100%);
-}
-
-.stars {
-  width: 100%;
-  height: 100%;
-  background: transparent url('../assets/images/stars.png') repeat;
-  animation: moveStars 200s linear infinite;
-}
-
-@keyframes moveStars {
-  0% { background-position: 0 0; }
-  100% { background-position: -10000px 10000px; }
-}
-
-.back-button {
-  display: inline-block;
-  margin: 20px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.2em;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 999;
-}
-
-.timeline-container {
+.timeline-scroll-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 }
 
-.timeline-item {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  border-left: 4px solid #6ef;
-  position: relative;
+.timeline-indicator {
+  width: 20px;
+  height: 100%;
+  position: sticky;
+  left: 0;
+  top: 0;
+  border-left: 4px solid #33d5ff;
+  margin-right: 20px;
 }
 
-.timeline-item::before {
-  content: "●";
-  color: #6ef;
-  font-size: 1.5em;
-  position: absolute;
-  left: -13px;
-  top: 40px;
+.timeline-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.timeline-item {
+  scroll-snap-align: center;
+  margin: 100px 0;
+  width: 70%;
+  max-width: 800px;
+  padding: 40px;
+  background-color: rgba(0, 132, 176, 0.3);
+  border-left: 4px solid #33d5ff;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.timeline-item:target,
+.timeline-item:focus-within {
+  background-color: #065875;
+  transform: scale(1.03);
 }
 
 .timeline-content {
-  max-width: 800px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
+  line-height: 1.6;
 }
 
 .timeline-date {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   color: #ccc;
 }
 
 .timeline-title {
-  font-size: 1.3em;
-  margin: 10px 0 5px;
-  color: #6ef;
+  margin: 0;
+  color: #33d5ff;
+  text-transform: uppercase;
 }
 
 .timeline-headline {
-  font-size: 1.1em;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin: 5px 0;
-  color: #fff;
+  margin: 0.5rem 0;
 }
 
 .timeline-source {
-  font-size: 0.9em;
   font-style: italic;
   color: #aaa;
 }
 
-.timeline-body {
-  font-size: 1em;
-  line-height: 1.6em;
-  margin-top: 10px;
-  color: #ddd;
+.back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  z-index: 1000;
+}
+
+.galaxy-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+}
+
+.stars {
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/ui/stars.png');
+  background-size: cover;
+  opacity: 0.2;
 }
