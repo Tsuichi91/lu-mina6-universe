@@ -1,13 +1,13 @@
-/* Grundlayout */
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
   font-family: 'Arial', sans-serif;
   background-color: #0a0a0a;
   color: #fff;
-  overflow-x: hidden;
 }
 
-/* Galaxy-Hintergrund */
 .galaxy-background {
   position: fixed;
   top: 0;
@@ -16,7 +16,6 @@ body {
   height: 100%;
   z-index: -1;
   background: radial-gradient(ellipse at center, #111 0%, #000 100%);
-  overflow: hidden;
 }
 
 .stars {
@@ -27,38 +26,36 @@ body {
 }
 
 @keyframes moveStars {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -10000px 10000px;
-  }
+  0% { background-position: 0 0; }
+  100% { background-position: -10000px 10000px; }
 }
 
-/* Zurück-Button */
 .back-button {
   display: inline-block;
   margin: 20px;
   color: #fff;
   text-decoration: none;
   font-size: 1.2em;
-}
-.back-button:hover {
-  text-decoration: underline;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
 }
 
-/* Timeline-Container */
 .timeline-container {
-  padding: 40px 20px;
-  max-width: 800px;
-  margin: 0 auto;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
-/* Einzelner Artikel */
 .timeline-item {
-  padding: 40px 20px;
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
   border-left: 4px solid #6ef;
-  margin-bottom: 50px;
   position: relative;
 }
 
@@ -69,6 +66,13 @@ body {
   position: absolute;
   left: -13px;
   top: 40px;
+}
+
+.timeline-content {
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 
 .timeline-date {
