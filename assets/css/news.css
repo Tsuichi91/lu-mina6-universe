@@ -1,9 +1,9 @@
 /* Grundlayout */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Arial', sans-serif;
+  background-color: #0a0a0a;
   color: #fff;
-  background: #000;
   overflow-x: hidden;
 }
 
@@ -14,8 +14,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
-  background: radial-gradient(ellipse at center, #0a0a2a 0%, #000000 100%);
+  z-index: -1;
+  background: radial-gradient(ellipse at center, #111 0%, #000 100%);
   overflow: hidden;
 }
 
@@ -23,101 +23,81 @@ body {
   width: 100%;
   height: 100%;
   background: transparent url('../assets/images/stars.png') repeat;
-  animation: starsScroll 100s linear infinite;
-  opacity: 0.3;
+  animation: moveStars 200s linear infinite;
 }
 
-@keyframes starsScroll {
-  from { background-position: 0 0; }
-  to { background-position: 10000px 10000px; }
+@keyframes moveStars {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -10000px 10000px;
+  }
 }
 
 /* Zurück-Button */
 .back-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  display: inline-block;
+  margin: 20px;
   color: #fff;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-  backdrop-filter: blur(6px);
-  z-index: 10;
-  transition: background 0.3s ease;
+  font-size: 1.2em;
 }
 .back-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  text-decoration: underline;
 }
 
-/* Timeline Layout */
+/* Timeline-Container */
 .timeline-container {
-  padding: 6rem 2rem 4rem;
+  padding: 40px 20px;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
 /* Einzelner Artikel */
 .timeline-item {
-  opacity: 0.3;
-  transform: scale(0.96);
-  transition: all 0.5s ease;
-  scroll-margin-top: 20vh;
+  padding: 40px 20px;
+  border-left: 4px solid #6ef;
+  margin-bottom: 50px;
+  position: relative;
 }
 
-.timeline-item:target,
-.timeline-item.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Inhalt */
-.timeline-content {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 20px rgba(173, 216, 230, 0.2);
-  backdrop-filter: blur(6px);
+.timeline-item::before {
+  content: "●";
+  color: #6ef;
+  font-size: 1.5em;
+  position: absolute;
+  left: -13px;
+  top: 40px;
 }
 
 .timeline-date {
-  font-weight: bold;
-  color: #89f0ff;
+  font-size: 0.9em;
+  color: #ccc;
 }
 
 .timeline-title {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin: 0.3rem 0;
+  font-size: 1.3em;
+  margin: 10px 0 5px;
+  color: #6ef;
 }
 
 .timeline-headline {
-  font-size: 1.1rem;
-  color: #ffd6f8;
-  font-weight: 500;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #fff;
 }
 
 .timeline-source {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-bottom: 1rem;
+  font-size: 0.9em;
+  font-style: italic;
+  color: #aaa;
 }
 
 .timeline-body {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Fokus bei Scrollen mit JavaScript */
-.timeline-item.active {
-  border-left: 4px solid #89f0ff;
-  background-color: rgba(255, 255, 255, 0.07);
+  font-size: 1em;
+  line-height: 1.6em;
+  margin-top: 10px;
+  color: #ddd;
 }
