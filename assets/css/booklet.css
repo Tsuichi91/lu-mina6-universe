@@ -1,26 +1,123 @@
-/* === ORBIT STARTPAGE STYLING + NEWS TIMELINE === */
+/* Grundlayout */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background: #000;
+  overflow-x: hidden;
+}
 
-body { margin: 0; padding: 0; background-color: #000; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; color: white; }
+/* Galaxy-Hintergrund */
+.galaxy-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: radial-gradient(ellipse at center, #0a0a2a 0%, #000000 100%);
+  overflow: hidden;
+}
 
-.news-container { position: relative; max-width: 800px; margin: 3rem auto; padding: 2rem 1rem; border-left: 3px solid #5ee7df; display: flex; flex-direction: column; gap: 2.5rem; }
+.stars {
+  width: 100%;
+  height: 100%;
+  background: transparent url('../assets/images/stars.png') repeat;
+  animation: starsScroll 100s linear infinite;
+  opacity: 0.3;
+}
 
-.news-item { position: relative; padding-left: 1.5rem; animation: fadeInUp 0.6s ease both; }
+@keyframes starsScroll {
+  from { background-position: 0 0; }
+  to { background-position: 10000px 10000px; }
+}
 
-.news-item::before { content: ''; position: absolute; left: -1.1rem; top: 0.3rem; width: 0.75rem; height: 0.75rem; background: #5ee7df; border-radius: 50%; box-shadow: 0 0 10px #5ee7df, 0 0 20px rgba(94, 231, 223, 0.5); }
+/* Zurück-Button */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
-.news-item h2 { font-size: 1.25rem; margin-bottom: 0.4rem; color: #a0c4ff; }
+/* Timeline Layout */
+.timeline-container {
+  padding: 6rem 2rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-.news-item time { font-size: 0.85rem; color: #ccc; display: block; margin-bottom: 0.5rem; }
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
 
-.news-item p { font-size: 1rem; line-height: 1.6; color: #eee; }
+/* Einzelner Artikel */
+.timeline-item {
+  opacity: 0.3;
+  transform: scale(0.96);
+  transition: all 0.5s ease;
+  scroll-margin-top: 20vh;
+}
 
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.timeline-item:target,
+.timeline-item.active {
+  opacity: 1;
+  transform: scale(1);
+}
 
-.back-button { display: inline-block; margin: 2rem; padding: 0.6rem 1.2rem; background: rgba(255, 255, 255, 0.1); color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); border-radius: 0.5rem; font-size: 1rem; transition: all 0.3s ease; backdrop-filter: blur(4px); box-shadow: 0 0 8px rgba(255,255,255,0.2); }
+/* Inhalt */
+.timeline-content {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(173, 216, 230, 0.2);
+  backdrop-filter: blur(6px);
+}
 
-.back-button:hover { background: rgba(255, 255, 255, 0.2); box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+.timeline-date {
+  font-weight: bold;
+  color: #89f0ff;
+}
 
-/* Shooting Star retained */ .shooting-star { position: absolute; top: -10px; left: -100px; width: 3px; height: 3px; background: white; box-shadow: 0 0 8px 2px #ffffff, 0 0 15px 5px #a0c4ff, 0 0 25px 10px rgba(255, 255, 255, 0.5); opacity: 0.9; border-radius: 50%; animation: shoot 3s linear infinite; z-index: -1; filter: blur(0.5px); }
+.timeline-title {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 0.3rem 0;
+}
 
-@keyframes shoot { 0% { transform: translate(0, 0) scale(1) rotate(45deg); opacity: 0.9; } 100% { transform: translate(100vw, 100vh) scale(0.3) rotate(45deg); opacity: 0; } }
+.timeline-headline {
+  font-size: 1.1rem;
+  color: #ffd6f8;
+  font-weight: 500;
+}
 
+.timeline-source {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.timeline-body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Fokus bei Scrollen mit JavaScript */
+.timeline-item.active {
+  border-left: 4px solid #89f0ff;
+  background-color: rgba(255, 255, 255, 0.07);
+}
